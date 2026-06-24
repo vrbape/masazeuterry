@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masáže u Terry | Hekrova 4, Praha 11</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- BAREVNÁ TÉMATA --- */
+        :root {
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Montserrat', sans-serif;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #777777;
+            --transition: 0.4s ease;
+        }
+
+        body.theme-natural { --primary: #8e735b; --secondary: #f8f5f2; --btn-hover: #6d5845; --border: #eeeeee; --footer-overlay: rgba(0, 0, 0, 0.85); }
+        body.theme-ocean { --primary: #1e5f74; --secondary: #e6f2f2; --btn-hover: #154556; --border: #c6e2e2; --footer-overlay: rgba(10, 40, 50, 0.9); }
+        body.theme-terracotta { --primary: #b35a44; --secondary: #fdf1e1; --btn-hover: #8f4836; --border: #e8d0bd; --footer-overlay: rgba(60, 30, 20, 0.9); }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--body-font); color: var(--text-dark); background-color: var(--white); line-height: 1.7; transition: var(--transition); }
+        h1, h2, h3 { font-family: var(--heading-font); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- UI PRVKY --- */
+        .theme-switcher { position: fixed; top: 100px; right: 20px; background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); z-index: 2000; border: 1px solid #eee; backdrop-filter: blur(10px); width: 160px; }
+        .theme-switcher-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; text-align: center; color: var(--text-light); letter-spacing: 1px; }
+        .theme-btn { padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: 6px; text-align: left; }
+        .theme-btn span { width: 14px; height: 14px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,0.1); }
+        #btn-natural { background: #f8f5f2; color: #8e735b; } #btn-natural span { background: #8e735b; }
+        #btn-ocean { background: #e6f2f2; color: #1e5f74; } #btn-ocean span { background: #1e5f74; }
+        #btn-terracotta { background: #fdf1e1; color: #b35a44; } #btn-terracotta span { background: #b35a44; }
+        .theme-btn.active { border-color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        /* --- NAVIGACE --- */
+        header { background: var(--white); padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: bold; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); }
+        nav a:hover { color: var(--primary); }
+
+        /* --- HERO SEKCE --- */
+        #hero { padding: 80px 0; background-color: var(--secondary); transition: var(--transition); }
+        .hero-flex { display: flex; align-items: center; gap: 40px; }
+        .hero-text { flex: 1.2; }
+        .hero-image { flex: 0.8; text-align: right; }
+        .hero-image img { width: 100%; max-width: 400px; border-radius: 4px; box-shadow: 15px 15px 0 var(--primary); transition: var(--transition); }
+        h1 { font-size: 3.2rem; color: var(--primary); margin-bottom: 20px; line-height: 1.1; }
+        .btn { display: inline-block; padding: 15px 35px; background: var(--primary); color: white; text-decoration: none; font-weight: bold; margin-top: 25px; border-radius: 2px; transition: var(--transition); }
+        .btn:hover { background: var(--btn-hover); transform: translateY(-2px); }
+
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--primary); }
+
+        /* --- O MNĚ SEKCE --- */
+        #omne { padding: 80px 0 40px 0; background-color: var(--white); }
+        .omne-content { max-width: 800px; margin: 0 auto; }
+        .omne-content p { margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+
+        /* --- CERTIFIKÁTY SEKCE --- */
+        #certifikaty { padding: 40px 0 80px 0; background-color: var(--white); }
+        .certifikaty-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .certifikat-item { display: flex; align-items: center; gap: 15px; padding: 15px 20px; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; color: var(--text-dark); transition: var(--transition); background: var(--white); }
+        .certifikat-item:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .pdf-icon { font-size: 1.8rem; color: #de423b; font-weight: bold; display: flex; align-items: center; }
+        .certifikat-info { display: flex; flex-direction: column; }
+        .certifikat-info span { font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
+        .certifikat-info small { color: var(--text-light); font-size: 0.8rem; margin-top: 2px; }
+
+        /* --- SLUŽBY --- */
+        #sluzby { padding: 80px 0; background-color: var(--white); }
+        .services-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 900px; margin: 0 auto; }
+        .service-card { padding: 30px; border: 1px solid var(--border); transition: var(--transition); background: var(--white); border-radius: 8px; cursor: pointer; }
+        .service-card:hover { border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .service-header { display: flex; justify-content: space-between; align-items: center; }
+        .service-header h3 { color: var(--primary); font-size: 1.6rem; line-height: 1.2; }
+        .service-info-mini { text-align: right; min-width: 130px; }
+        .price { display: block; font-weight: bold; font-size: 1.3rem; color: var(--primary); }
+        .service-detail { max-height: 0; overflow: hidden; transition: max-height 0.6s ease; border-top: 0px solid var(--border); }
+        .service-card.open .service-detail { max-height: 3500px; margin-top: 20px; padding-top: 20px; border-top-width: 1px; }
+        .btn-detail { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 6px 15px; cursor: pointer; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-top: 15px; transition: 0.3s; }
+        .service-card.open .btn-detail { background: var(--primary); color: var(--white); }
+        
+        .detail-content p { margin-bottom: 15px; font-size: 1rem; color: var(--text-dark); }
+        .detail-content h4 { margin: 25px 0 10px 0; color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .detail-content ul { margin-left: 20px; margin-bottom: 20px; }
+        .detail-content li { margin-bottom: 10px; font-size: 0.95rem; list-style-type: none; border-left: 2px solid var(--primary); padding-left: 15px; }
+        .detail-content li strong { color: var(--text-dark); }
+
+        /* --- FAQ SEKCE --- */
+        #faq { padding: 80px 0; background-color: var(--secondary); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--white); margin-bottom: 12px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+        .faq-question { padding: 18px; width: 100%; text-align: left; background: none; border: none; cursor: pointer; font-family: var(--body-font); font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
+        .faq-item.active .faq-question::after { content: '-'; }
+        .faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.95rem; color: var(--text-light); }
+        .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 18px; }
+
+        /* --- GALERIE --- */
+        #galerie-sekce { padding: 80px 0; }
+        .gallery-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
+        .gallery-container { display: grid; grid-auto-flow: column; grid-auto-columns: calc(33.333% - 20px); gap: 30px; overflow-x: hidden; scroll-behavior: smooth; width: 100%; padding: 10px 0; }
+        .gallery-item { width: 100%; height: 380px; overflow: hidden; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: var(--primary); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 10; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .arrow-prev { left: -22px; } .arrow-next { right: -22px; }
+
+        /* --- REZERVACE --- */
+        #rezervace { padding: 80px 0; background-color: var(--secondary); }
+        .reservation-box { width: 100%; min-height: 200px; background: white; border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px; }
+
+        /* --- KONTAKT A MAPA --- */
+        #kontakt { padding: 80px 0; }
+        .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .kontakt-info p { margin-bottom: 15px; }
+        .kontakt-info a { color: var(--primary); font-weight: bold; text-decoration: none; }
+        .mapa-box { height: 400px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+
+        /* --- PATIČKA --- */
+        footer {
+            background: linear-gradient(var(--footer-overlay), var(--footer-overlay)), url('Galerie/footer.png');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: #ffffff; padding: 70px 0; text-align: center; font-size: 0.9rem; transition: var(--transition);
+        }
+        footer .logo { font-size: 1.5rem; color: var(--white); margin-bottom: 20px; letter-spacing: 2px; }
+        footer a { color: #ffffff !important; font-weight: 600; text-decoration: none; }
+
+        .floating-btn { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1500; }
+
+        @media (max-width: 768px) {
+            .gallery-container { grid-auto-columns: 100%; }
+            .hero-flex, .kontakt-grid { flex-direction: column; text-align: center; }
+            .hero-image { order: -1; margin-bottom: 30px; }
+            nav ul { display: none; }
+            h1 { font-size: 2.4rem; }
+            .service-header { flex-direction: column; text-align: center; gap: 10px; }
+            .certifikaty-grid { grid-template-columns: 1fr; }
+            footer { background-attachment: scroll; }
+        }
+    </style>
+</head>
+<body class="theme-natural">
+
+    <div class="theme-switcher">
+        <div class="theme-switcher-title">Vzhled webu</div>
+        <div class="theme-buttons">
+            <button id="btn-natural" class="theme-btn active" onclick="setTheme('natural')"><span></span>Natural</button>
+            <button id="btn-ocean" class="theme-btn" onclick="setTheme('ocean')"><span></span>Oceán</button>
+            <button id="btn-terracotta" class="theme-btn" onclick="setTheme('terracotta')"><span></span>Terakota</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Masáže u Terry</div>
+                <ul>
+                    <li><a href="#hero">Úvod</a></li>
+                    <li><a href="#omne">O mně</a></li>
+                    <li><a href="#sluzby">Služby</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#galerie-sekce">Galerie</a></li>
+                    <li><a href="#rezervace">Rezervace</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="container hero-flex">
+            <div class="hero-text">
+                <h1>Masáže u Terry</h1>
+                <p>Dopřejte svému tělu hlubokou regeneraci a mysli zasloužený klid. Profesionální masérské služby na Praze 11.</p>
+                <a href="#rezervace" class="btn">Chci se objednat</a>
+            </div>
+            <div class="hero-image">
+                <img src="image_2.png" alt="Vaše masérka">
+            </div>
+        </div>
+    </section>
+
+    <!-- O MNĚ -->
+    <section id="omne" class="container">
+        <h2 class="section-title">O mně</h2>
+        <div class="omne-content">
+            <p>Pohyb, fungování lidského těla a přirozené způsoby, jak si ulevit od bolesti, mě fascinují už od dětství. Vždy jsem věřila, že tělo má obrovskou schopnost regenerace, pokud mu porozumíme a dáme mu správnou podporu.</p>
+            <p>V roce 2019 jsem absolvovala několik odborných kurzů a začala se naplno věnovat masážím. Během své praxe jsem spolupracovala s firemními klienty, mimo jiné ve společnosti H1 a ve společnosti Publicis Groupe.</p>
+            <p>Velmi cennou zkušeností pro mě byla spolupráce s Centrum Paraple, kde jsem pracovala s klienty po poranění míchy a s lidmi žijícími s paraplegií či kvadruplegií. Právě zde jsem získala hlubší porozumění fungování nervového systému, významu fasciálních struktur a souvislostem mezi dlouhodobým svalovým napětím, spasticitou, chronickou bolestí a omezením pohybu.</p>
+            <p>Tato zkušenost mě naučila vnímat lidské tělo komplexně – neřešit pouze místo bolesti, ale hledat její skutečnou příčinu a souvislosti v rámci celého pohybového aparátu.</p>
+            <p>Ve své praxi se specializuji na práci s fasciemi, svalovými dysbalancemi, přetížením, spazmy a funkčními obtížemi nervosvalového systému. Každý klient je pro mě jedinečný, a proto ke každému přistupuji individuálně a v širších souvislostech.</p>
+            <p>Mým cílem není pouze krátkodobá úleva nebo příjemný relaxační zážitek. Zaměřuji se na skutečnou pomoc a dlouhodobé výsledky. Moje masáže jsou intenzivnější a terapeuticky zaměřené – někdy mohou být v určitých místech citlivější či mírně bolestivé, vždy však s respektem k vašim možnostem a aktuálnímu stavu.</p>
+            <p>Zakládám si na přátelském přístupu, pečlivosti a důkladnosti. Věřím, že otevřená komunikace, vzájemná důvěra a individuální péče jsou základem úspěšné terapie.</p>
+            <p>Pomohu vám lépe porozumět vašemu tělu, najít příčinu obtíží a vrátit se k pohybu bez bolesti.</p>
+        </div>
+    </section>
+
+    <!-- CERTIFIKÁTY -->
+    <section id="certifikaty" class="container">
+        <h3 style="text-align: center; margin-bottom: 30px; font-family: var(--heading-font); font-size: 1.8rem; color: var(--primary);">Moje certifikáty a kvalifikace</h3>
+        <div class="certifikaty-grid">
+            
+            <!-- Certifikát 1 -->
+            <a href="certifikaty/Dexter Academy 2.pdf" target="_blank" class="certifikat-item">
+                <div class="pdf-icon">📄</div>
+                <div class="certifikat-info">
+                    <span>Havajská masáž (Lomi Lomi I)</span>
+                    <small>Dexter Academy | Otevřít (PDF)</small>
+                </div>
+            </a>
+
+            <!-- Certifikát 2 -->
+            <a href="certifikaty/Dexter Academy 3.pdf" target="_blank" class="certifikat-item">
+                <div class="pdf-icon">📄</div>
+                <div class="certifikat-info">
+                    <span>Lávové kameny (Hot Stones I)</span>
+                    <small>Dexter Academy | Otevřít (PDF)</small>
+                </div>
+            </a>
+
+            <!-- Certifikát 3 -->
+            <a href="certifikaty/Dexter Academy 4.pdf" target="_blank" class="certifikat-item">
+                <div class="pdf-icon">📄</div>
+                <div class="certifikat-info">
+                    <span>Masér terapeut (80 hod.)</span>
+                    <small>Dexter Academy | Otevřít (PDF)</small>
+                </div>
+            </a>
+
+            <!-- Certifikát 4 -->
+            <a href="certifikaty/Dexter Academy 5.pdf" target="_blank" class="certifikat-item">
+                <div class="pdf-icon">📄</div>
+                <div class="certifikat-info">
+                    <span>Přípravná sportovní masáž</span>
+                    <small>Dexter Academy | Otevřít (PDF)</small>
+                </div>
+            </a>
+
+            <!-- Certifikát 5 -->
+            <a href="certifikaty/Dexter Academy 6.pdf" target="_blank" class="certifikat-item">
+                <div class="pdf-icon">📜</div>
+                <div class="certifikat-info">
+                    <span>Osvědčení MŠMT – Sportovní masáž</span>
+                    <small>Celostátní kvalifikace (150 hod.) | PDF</small>
+                </div>
+            </a>
+
+            <!-- Certifikát 6 -->
+            <a href="certifikaty/KONDAKOV.pdf" target="_blank" class="certifikat-item">
+                <div class="pdf-icon">📄</div>
+                <div class="certifikat-info">
+                    <span>Structural & Plastic Facial Modeling</span>
+                    <small>Kondakov Massage Academy | PDF</small>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- NABÍDKA SLUŽEB -->
+    <section id="sluzby" class="container">
+        <h2 class="section-title">Nabídka masáží</h2>
+        <div class="services-grid">
+
+            <!-- 1. HLOUBKOVÁ -->
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3>Hloubková regenerační masáž</h3>
+                    <div class="service-info-mini">
+                        <span class="price">1 300 Kč</span>
+                        <small>45 min</small>
+                    </div>
+                </div>
+                <button class="btn-detail">Více o masáži</button>
+                <div class="service-detail">
+                    <div class="detail-content">
+                        <p><strong>Hloubková regenerační masáž</strong> je kombinace několika technik a cílená práce s tělem. Pracuji opravdu intenzivně do hloubky, a díky tomu je ošetření velmi účinné a přináší <strong>dlouhodobou úlevu</strong>. Nezaměřuji se pouze na místo, kde cítíte bolest, ale hledám její <strong>skutečnou příčinu</strong> – protože právě tam začíná opravdová změna.</p>
+                        
+                        <p>Tato péče pomáhá ulevit od chronických potíží, zlepšuje flexibilitu a rozsah pohybu, podporuje regeneraci a zároveň přirozeně rozproudí lymfu. Tělo tak dostává prostor k hlubokému nastartování vlastních samoléčebných procesů a zároveň se posiluje jeho odolnost vůči přetížení i zraněním.</p>
+                        
+                        <p>Každé ošetření je pro mě spolupráce – naslouchám vašemu tělu i tomu, co mi během terapie ukazuje. Mým cílem není jen krátkodobá úleva, ale skutečná změna, kterou pocítíte v každodenním životě.</p>
+                        
+                        <p>Odcházet můžete s lehkostí, větší volností pohybu a pocitem, že vaše tělo dostalo přesně to, co potřebovalo.</p>
+                        
+                        <h4>Ve své praxi propojuji tyto techniky:</h4>
+                        <ul>
+                            <li><strong>Myofasciální uvolnění</strong> – cílená práce s fasciemi, která uvolňuje hluboké napětí a obnovuje přirozenou pohyblivost tkání</li>
+                            <li><strong>Trigger point (spoušťové body)</strong> – ošetření bolestivých bodů, které často způsobují potíže i v jiných částech těla</li>
+                            <li><strong>Měkké techniky</strong> – jemné, ale velmi efektivní uvolnění svalů, šlach a vazů</li>
+                            <li><strong>Lymfatické techniky</strong> – podpora toku lymfy, detoxikace a snížení otoků</li>
+                            <li><strong>Mobilizační techniky</strong> – navrací kloubům přirozený rozsah pohybu bez bolesti</li>
+                            <li><strong>Postizometrická relaxace (PIR)</strong> – práce se svalovým napětím pomocí jemné aktivace a následného uvolnění</li>
+                            <li><strong>Fasciální stretch a strečink</strong> – kombinace tlaku a protažení pro hlubší uvolnění a větší volnost pohybu</li>
+                            <li><strong>Neuromuskulární techniky</strong> – precizní práce se svaly a nervovým systémem pro lepší koordinaci a vnímání těla</li>
+                            <li><strong>Pasivní mobilizace</strong> – šetrné rozhýbání kloubů bez zátěže</li>
+                            <li><strong>Prvky Dornovy metody</strong> – jemné srovnání kloubů a páteře do přirozené polohy</li>
+                            <li><strong>Regresní masáž</strong> – práce s uloženým napětím v těle, které může mít hlubší (i psychický) původ, a jeho postupné uvolnění</li>
+                            <li><strong>Dechová a somatická práce</strong> – zapojení dechu a vnímání těla pro ještě hlubší efekt a uvolnění</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. BREUSSOVA -->
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3>Breussova masáž s prvky Dornovy metody</h3>
+                    <div class="service-info-mini">
+                        <span class="price">1 300 Kč</span>
+                        <small>45 min</small>
+                    </div>
+                </div>
+                <button class="btn-detail">Více o masáži</button>
+                <div class="service-detail">
+                    <div class="detail-content">
+                        <p>Tato kombinace představuje ucelenou péči, která vrací tělo do jeho přirozené rovnováhy bez bolesti. Využití <strong>prvků Dornovy metody umožňuje</strong> za vaší aktivní účasti (jemného pohybu) šetrně nasměrovat obratle a klouby na jejich správné místo.</p>
+                        <p>Navazující <strong>Breussova masáž je bezbolestná a jemná</strong>, přesto však <strong>velice intenzivní na energetické úrovni</strong>. Jde o hloubkový regenerační rituál, který působí jako balzám přímo na meziobratlové ploténky a nervovou soustavu. Tato technika dokáže okamžitě zklidnit mysl, odbourat hluboko uložený stres a nastartovat silné samoozdravné procesy v celém organismu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. OBLIČEJ -->
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3>Strukturální masáž obličeje a dekoltu / Faceform</h3>
+                    <div class="service-info-mini">
+                        <span class="price">1 500 Kč</span>
+                        <small>45 min</small>
+                    </div>
+                </div>
+                <button class="btn-detail">Více o masáži</button>
+                <div class="service-detail">
+                    <div class="detail-content">
+                        <p>Strukturální masáž obličeje a dekoltu není jen běžná kosmetická masáž, ale intenzivní terapeutická metoda vycházející z poznatků čelistně-obličejové chirurgie a fyzioterapie. Masíruje se hlava, hrudník, šíje a obličej. Hloubková práce s mimickými svaly, fasciemi a lymfou. Zjemňování rýh a vrásek.</p>
+                        
+                        <h4>Estetický efekt jako výsledek zdraví</h4>
+                        <p>Díky uvolnění svalového napětí dochází k přirozenému faceliftu: Neřeším jen následek (vrásku), ale její příčinu v hlubokých strukturách. Alternativa k invazivním zákrokům.</p>
+
+                        <h4>Hlavní přínosy:</h4>
+                        <p>Uvolnění šíje a krční páteře. <strong>Uvolnění čelistního kloubu:</strong> Pomáhá při chronickém zatínání zubů a uvolňuje napětí žvýkacích svalů. <strong>Úleva od bolestí hlavy:</strong> Práce s fasciemi na lebce a úpony v oblasti týla zmírňuje tenzní bolesti. <strong>Svalová rovnováha:</strong> Koriguje asymetrie obličeje. <strong>Lymfatická drenáž:</strong> Aktivuje hloubkový odvod toxinů a zmírňuje otoky.</p>
+                        
+                        <h4>Estetický efekt jako výsledek zdraví</h4>
+                        <p>Díky uvolnění svalového napětí dochází k přirozenému faceliftu: Neřeším jen následek (vrásku), ale její příčinu v hlubokých strukturách.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Často kladené dotazy</h2>
+            <div class="faq-container">
+                <div class="faq-item"><button class="faq-question">Jak se mám na masáž připravit?</button><div class="faq-answer">Doporučuji cca hodinu před masáží nejíst těžká jídla. Vše potřebné pro vás bude připraveno u mě ve studiu.</div></div>
+                <div class="faq-item"><button class="faq-question">Co si mám vzít s sebou?</button><div class="faq-answer">Vůbec nic. Ve studiu máte k dispozici čisté ručníky i prostěradla. Stačí přijít s dobrou náladou.</div></div>
+                <div class="faq-item"><button class="faq-question">Kdy není masáž vhodná (kontraindikace)?</button><div class="faq-answer">Masáž prosím odložte, pokud se cítíte nemocní, máte horečku, infekční onemocnění nebo akutní záněty.</div></div>
+                <div class="faq-item"><button class="faq-question">Jak často bych měl/a na masáž chodit?</button><div class="faq-answer">Pro preventivní účely doporučuji masáž 1x za měsíc. Při řešení blokád je vhodné přijít 1x za 14 dní.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="galerie-sekce" class="container">
+        <div class="gallery-wrapper">
+            <button class="nav-arrow arrow-prev" onclick="moveGallery(-1)">❮</button>
+            <div class="gallery-container" id="gallery-root"></div>
+            <button class="nav-arrow arrow-next" onclick="moveGallery(1)">❯</button>
+        </div>
+    </section>
+
+    <!-- REZERVACE -->
+    <section id="rezervace">
+        <div class="container">
+            <h2 class="section-title">Rezervace termínu</h2>
+            <div class="reservation-box">
+                <div>
+                    <a href="tel:+420728562001" class="btn">Rezervovat telefonicky: 728 562 001</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="container">
+        <div class="kontakt-grid">
+            <div class="kontakt-info">
+                <p><strong>Adresa:</strong><br> Hekrova 4, 149 00 Praha 11-Háje</p>
+                <p><strong>Telefon:</strong><br> <a href="tel:+420728562001">728 562 001</a></p>
+                <p><strong>E-mail:</strong><br> <a href="mailto:info@masazeuterry.cz">info@masazeuterry.cz</a></p>
+                <br>
+                <p><em>Dostupnost: 5 minut chůze od metra Háje (linka C). Bezproblémové parkování přímo v ulici Hekrova.</em></p>
+            </div>
+            <div class="mapa-box">
+                <iframe src="https://maps.google.com/maps?q=Hekrova%204%2C%20Praha%2011&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">Masáže u Terry</div>
+            <p>Hekrova 4, 149 00 Praha 11-Háje</p>
+            <p>Tel: <a href="tel:+420728562001">728 562 001</a> | <a href="podminky.html" target="_blank">Obchodní podmínky</a></p>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">© 2026 Masáže u Terry.</p>
+        </div>
+    </footer>
+
+    <script>
+        function setTheme(themeName) {
+            document.body.className = 'theme-' + themeName;
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+            const targetBtn = document.getElementById('btn-' + themeName);
+            if(targetBtn) targetBtn.classList.add('active');
+        }
+
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        function toggleService(card) {
+            card.classList.toggle('open');
+            const btn = card.querySelector('.btn-detail');
+            btn.textContent = card.classList.contains('open') ? 'Méně informací' : 'Více o masáži';
+        }
+
+        const seznamFotek = ['Galerie/foto1.png', 'Galerie/foto2.png', 'Galerie/foto3.png', 'Galerie/foto4.png', 'Galerie/foto5.png'];
+        const galleryRoot = document.getElementById('gallery-root');
+        const prevBtn = document.querySelector('.arrow-prev');
+        const nextBtn = document.querySelector('.arrow-next');
+
+        function initGallery() {
+            if(!galleryRoot) return;
+            seznamFotek.forEach(src => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `<img src="${src}" alt="Studio">`;
+                galleryRoot.appendChild(item);
+            });
+            if (seznamFotek.length > 3) {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            }
+        }
+
+        function moveGallery(direction) {
+            const itemWidth = document.querySelector('.gallery-item').offsetWidth + 30;
+            galleryRoot.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+        }
+
+        initGallery();
+    </script>
+</body>
+</html>
