@@ -162,7 +162,15 @@
         .hero-flex { display: flex; align-items: center; gap: 40px; }
         .hero-text { flex: 1.2; }
         .hero-image { flex: 0.8; text-align: right; }
-        .hero-image img { width: 100%; max-width: 400px; border-radius: 4px; box-shadow: 15px 15px 0 var(--primary); transition: var(--transition); }
+        .hero-image img { 
+            width: 100%; 
+            max-width: 350px; 
+            aspect-ratio: 9 / 16; /* Zachování poměru stran 900x1600 */
+            object-fit: cover;
+            border-radius: 4px; 
+            box-shadow: 15px 15px 0 var(--primary); 
+            transition: var(--transition); 
+        }
         h1 { font-size: 3.2rem; color: var(--primary); margin-bottom: 20px; line-height: 1.1; }
         .btn { display: inline-block; padding: 15px 35px; background: var(--primary); color: white; text-decoration: none; font-weight: bold; margin-top: 25px; border-radius: 2px; transition: var(--transition); }
         .btn:hover { background: var(--btn-hover); transform: translateY(-2px); }
@@ -249,6 +257,9 @@
             .gallery-container { grid-auto-columns: 100%; }
             .hero-flex, .kontakt-grid { flex-direction: column; text-align: center; }
             .hero-image { order: -1; margin-bottom: 30px; }
+            .hero-image img { 
+                max-width: 280px; /* Menší na mobilu */
+            }
             nav ul { display: none; }
             h1 { font-size: 2.4rem; }
             .service-header { flex-direction: column; text-align: center; gap: 10px; }
@@ -301,7 +312,11 @@
                     <a href="#rezervace" class="btn" aria-label="Přejít na rezervaci termínu">Chci se objednat</a>
                 </article>
                 <div class="hero-image">
-                    <img src="image_2.png" alt="Profesionální masérka Terry - Masáže Praha 11" width="400" height="533" loading="eager">
+                    <img src="image_2.png" 
+                         alt="Profesionální masérka Terry - Masáže Praha 11" 
+                         width="900" 
+                         height="1600" 
+                         loading="eager">
                 </div>
             </div>
         </section>
