@@ -119,7 +119,7 @@
     </script>
 
     <style>
-        /* --- BAREVNÁ TÉMATA --- */
+        /* --- BAREVNÁ TÉMATA - TERAKOTA --- */
         :root {
             --heading-font: 'Playfair Display', serif;
             --body-font: 'Montserrat', sans-serif;
@@ -127,27 +127,18 @@
             --text-dark: #333333;
             --text-light: #777777;
             --transition: 0.4s ease;
+            --primary: #b35a44;
+            --secondary: #fdf1e1;
+            --btn-hover: #8f4836;
+            --border: #e8d0bd;
+            --footer-overlay: rgba(60, 30, 20, 0.9);
         }
-
-        body.theme-natural { --primary: #8e735b; --secondary: #f8f5f2; --btn-hover: #6d5845; --border: #eeeeee; --footer-overlay: rgba(0, 0, 0, 0.85); }
-        body.theme-ocean { --primary: #1e5f74; --secondary: #e6f2f2; --btn-hover: #154556; --border: #c6e2e2; --footer-overlay: rgba(10, 40, 50, 0.9); }
-        body.theme-terracotta { --primary: #b35a44; --secondary: #fdf1e1; --btn-hover: #8f4836; --border: #e8d0bd; --footer-overlay: rgba(60, 30, 20, 0.9); }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--body-font); color: var(--text-dark); background-color: var(--white); line-height: 1.7; transition: var(--transition); }
+        body { font-family: var(--body-font); color: var(--text-dark); background-color: var(--white); line-height: 1.7; }
         h1, h2, h3, h4, h5, h6 { font-family: var(--heading-font); }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- UI PRVKY --- */
-        .theme-switcher { position: fixed; top: 100px; right: 20px; background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); z-index: 2000; border: 1px solid #eee; backdrop-filter: blur(10px); width: 160px; }
-        .theme-switcher-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; text-align: center; color: var(--text-light); letter-spacing: 1px; }
-        .theme-btn { padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: 6px; text-align: left; }
-        .theme-btn span { width: 14px; height: 14px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,0.1); }
-        #btn-natural { background: #f8f5f2; color: #8e735b; } #btn-natural span { background: #8e735b; }
-        #btn-ocean { background: #e6f2f2; color: #1e5f74; } #btn-ocean span { background: #1e5f74; }
-        #btn-terracotta { background: #fdf1e1; color: #b35a44; } #btn-terracotta span { background: #b35a44; }
-        .theme-btn.active { border-color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
         /* --- NAVIGACE --- */
         header { background: var(--white); padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
@@ -158,14 +149,14 @@
         nav a:hover { color: var(--primary); }
 
         /* --- HERO SEKCE --- */
-        #hero { padding: 80px 0; background-color: var(--secondary); transition: var(--transition); }
+        #hero { padding: 80px 0; background-color: var(--secondary); }
         .hero-flex { display: flex; align-items: center; gap: 40px; }
         .hero-text { flex: 1.2; }
         .hero-image { flex: 0.8; text-align: right; }
         .hero-image img { 
-            width: 100%; 
-            max-width: 350px; 
-            aspect-ratio: 9 / 16; /* Zachování poměru stran 900x1600 */
+            width: auto; 
+            max-height: 500px;
+            aspect-ratio: 2 / 3;
             object-fit: cover;
             border-radius: 4px; 
             box-shadow: 15px 15px 0 var(--primary); 
@@ -222,15 +213,6 @@
         .faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.95rem; color: var(--text-light); }
         .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 18px; }
 
-        /* --- GALERIE --- */
-        #galerie-sekce { padding: 80px 0; }
-        .gallery-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
-        .gallery-container { display: grid; grid-auto-flow: column; grid-auto-columns: calc(33.333% - 20px); gap: 30px; overflow-x: hidden; scroll-behavior: smooth; width: 100%; padding: 10px 0; }
-        .gallery-item { width: 100%; height: 380px; overflow: hidden; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: var(--primary); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 10; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .arrow-prev { left: -22px; } .arrow-next { right: -22px; }
-
         /* --- REZERVACE --- */
         #rezervace { padding: 80px 0; background-color: var(--secondary); }
         .reservation-box { width: 100%; min-height: 200px; background: white; border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px; }
@@ -240,25 +222,23 @@
         .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
         .kontakt-info p { margin-bottom: 15px; }
         .kontakt-info a { color: var(--primary); font-weight: bold; text-decoration: none; }
+        .kontakt-info a:hover { text-decoration: underline; }
         .mapa-box { height: 400px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
 
         /* --- PATIČKA --- */
         footer {
             background: linear-gradient(var(--footer-overlay), var(--footer-overlay)), url('Galerie/footer.png');
             background-size: cover; background-position: center; background-attachment: fixed;
-            color: #ffffff; padding: 70px 0; text-align: center; font-size: 0.9rem; transition: var(--transition);
+            color: #ffffff; padding: 70px 0; text-align: center; font-size: 0.9rem;
         }
         footer .logo { font-size: 1.5rem; color: var(--white); margin-bottom: 20px; letter-spacing: 2px; }
         footer a { color: #ffffff !important; font-weight: 600; text-decoration: none; }
 
-        .floating-btn { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1500; }
-
         @media (max-width: 768px) {
-            .gallery-container { grid-auto-columns: 100%; }
             .hero-flex, .kontakt-grid { flex-direction: column; text-align: center; }
             .hero-image { order: -1; margin-bottom: 30px; }
             .hero-image img { 
-                max-width: 280px; /* Menší na mobilu */
+                max-height: 380px;
             }
             nav ul { display: none; }
             h1 { font-size: 2.4rem; }
@@ -268,17 +248,7 @@
         }
     </style>
 </head>
-<body class="theme-natural">
-
-    <!-- Theme Switcher -->
-    <aside class="theme-switcher" role="complementary" aria-label="Výběr barevného tématu">
-        <div class="theme-switcher-title">Vzhled webu</div>
-        <div class="theme-buttons">
-            <button id="btn-natural" class="theme-btn active" onclick="setTheme('natural')" aria-label="Přepnout na přírodní téma"><span></span>Natural</button>
-            <button id="btn-ocean" class="theme-btn" onclick="setTheme('ocean')" aria-label="Přepnout na oceánské téma"><span></span>Oceán</button>
-            <button id="btn-terracotta" class="theme-btn" onclick="setTheme('terracotta')" aria-label="Přepnout na terakotové téma"><span></span>Terakota</button>
-        </div>
-    </aside>
+<body>
 
     <!-- Header & Navigation -->
     <header role="banner">
@@ -292,7 +262,6 @@
                     <li><a href="#omne">O mně</a></li>
                     <li><a href="#sluzby">Služby</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#galerie-sekce">Galerie</a></li>
                     <li><a href="#rezervace">Rezervace</a></li>
                     <li><a href="#kontakt">Kontakt</a></li>
                 </ul>
@@ -315,7 +284,7 @@
                     <img src="image_2.png" 
                          alt="Profesionální masérka Terry - Masáže Praha 11" 
                          width="900" 
-                         height="1600" 
+                         height="1350" 
                          loading="eager">
                 </div>
             </div>
@@ -532,16 +501,6 @@
             </div>
         </section>
 
-        <!-- GALERIE Section -->
-        <section id="galerie-sekce" class="container" aria-labelledby="galerie-heading">
-            <h2 id="galerie-heading" class="section-title" style="margin-bottom: 40px;">Galerie studia</h2>
-            <div class="gallery-wrapper">
-                <button class="nav-arrow arrow-prev" onclick="moveGallery(-1)" aria-label="Předchozí obrázek">❮</button>
-                <div class="gallery-container" id="gallery-root" role="region" aria-label="Fotogalerie masážního studia"></div>
-                <button class="nav-arrow arrow-next" onclick="moveGallery(1)" aria-label="Následující obrázek">❯</button>
-            </div>
-        </section>
-
         <!-- REZERVACE Section -->
         <section id="rezervace" aria-labelledby="rezervace-heading">
             <div class="container">
@@ -574,6 +533,8 @@
                     </p>
                     <br>
                     <p><em>Dostupnost: 5 minut chůze od metra Háje (linka C). Bezproblémové parkování přímo v ulici Hekrova.</em></p>
+                    <br>
+                    <p><a href="https://maps.app.goo.gl/qMiyfLPJZAYFyXtb8" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; margin-top: 10px;">📍 Zobrazit na Google Maps</a></p>
                 </div>
                 <div class="mapa-box">
                     <iframe 
@@ -608,26 +569,6 @@
 
     <!-- JavaScript - Defer for better performance -->
     <script defer>
-        // Theme Switcher
-        function setTheme(themeName) {
-            document.body.className = 'theme-' + themeName;
-            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
-            const targetBtn = document.getElementById('btn-' + themeName);
-            if(targetBtn) {
-                targetBtn.classList.add('active');
-                // Save preference
-                localStorage.setItem('selectedTheme', themeName);
-            }
-        }
-
-        // Load saved theme
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('selectedTheme');
-            if(savedTheme) {
-                setTheme(savedTheme);
-            }
-        });
-
         // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
@@ -653,40 +594,6 @@
             btn.textContent = card.classList.contains('open') ? 'Méně informací' : 'Více o masáži';
             btn.setAttribute('aria-expanded', card.classList.contains('open'));
         }
-
-        // Gallery
-        const seznamFotek = [
-            'Galerie/foto1.png', 
-            'Galerie/foto2.png', 
-            'Galerie/foto3.png', 
-            'Galerie/foto4.png', 
-            'Galerie/foto5.png'
-        ];
-        const galleryRoot = document.getElementById('gallery-root');
-        const prevBtn = document.querySelector('.arrow-prev');
-        const nextBtn = document.querySelector('.arrow-next');
-
-        function initGallery() {
-            if(!galleryRoot) return;
-            seznamFotek.forEach((src, index) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.innerHTML = `<img src="${src}" alt="Masážní studio Terry - fotografie ${index + 1}" loading="lazy" width="350" height="380">`;
-                galleryRoot.appendChild(item);
-            });
-            if (seznamFotek.length > 3) {
-                prevBtn.style.display = 'flex';
-                nextBtn.style.display = 'flex';
-            }
-        }
-
-        function moveGallery(direction) {
-            const itemWidth = document.querySelector('.gallery-item').offsetWidth + 30;
-            galleryRoot.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
-        }
-
-        // Initialize gallery on load
-        window.addEventListener('DOMContentLoaded', initGallery);
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
