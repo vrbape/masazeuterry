@@ -1,2 +1,2 @@
 # masazeuterry
-webpage..
+webpage...
