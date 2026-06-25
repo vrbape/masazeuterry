@@ -1,14 +1,122 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+    <!-- Základní meta tagy -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masáže u Terry | Hekrova 4, Praha 11</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <!-- Google Fonts -->
+    <!-- SEO Meta tagy -->
+    <title>Masáže u Terry Praha 11 - Hloubková, Breussova masáž | Hekrova 4</title>
+    <meta name="description" content="Profesionální masáže v Praze 11 - Hloubková regenerační, Breussova masáž, strukturální masáž obličeje. Certifikovaná masérka. Rezervace: 728 562 001">
+    <meta name="keywords" content="masáže Praha 11, hloubková masáž, Breussova masáž, masáž obličeje, regenerační masáž, masérka Praha, Háje metro">
+    <meta name="author" content="Masáže u Terry">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.masazeuterry.cz/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.masazeuterry.cz/">
+    <meta property="og:title" content="Masáže u Terry - Profesionální masáže Praha 11">
+    <meta property="og:description" content="Dopřejte svému tělu hlubokou regeneraci. Certifikované masáže v Praze 11, 5 minut od metra Háje.">
+    <meta property="og:image" content="https://www.masazeuterry.cz/image_2.png">
+    <meta property="og:locale" content="cs_CZ">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Masáže u Terry - Profesionální masáže Praha 11">
+    <meta name="twitter:description" content="Hloubková regenerační masáž, Breussova masáž a další služby v Praze 11.">
+    <meta name="twitter:image" content="https://www.masazeuterry.cz/image_2.png">
+    
+    <!-- Geo tagy -->
+    <meta name="geo.region" content="CZ-PR">
+    <meta name="geo.placename" content="Praha 11">
+    <meta name="geo.position" content="50.0343;14.5578">
+    <meta name="ICBM" content="50.0343, 14.5578">
+    
+    <!-- Google Fonts - Optimalizováno -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- JSON-LD Strukturovaná data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.masazeuterry.cz",
+      "name": "Masáže u Terry",
+      "image": "https://www.masazeuterry.cz/image_2.png",
+      "description": "Profesionální masérské služby v Praze 11 - hloubková regenerační masáž, Breussova masáž, strukturální masáž obličeje",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hekrova 4",
+        "addressLocality": "Praha 11-Háje",
+        "postalCode": "149 00",
+        "addressCountry": "CZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "50.0343",
+        "longitude": "14.5578"
+      },
+      "telephone": "+420728562001",
+      "email": "info@masazeuterry.cz",
+      "url": "https://www.masazeuterry.cz",
+      "priceRange": "1300-1500 Kč",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/masazeuterry"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Masážní služby",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hloubková regenerační masáž",
+              "description": "Kombinace několika technik pro dlouhodobou úlevu od chronických potíží"
+            },
+            "price": "1300",
+            "priceCurrency": "CZK"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Breussova masáž s prvky Dornovy metody",
+              "description": "Jemná masáž pro regeneraci meziobratlových plotének"
+            },
+            "price": "1300",
+            "priceCurrency": "CZK"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Strukturální masáž obličeje a dekoltu",
+              "description": "Terapeutická metoda pro uvolnění mimických svalů a fascie"
+            },
+            "price": "1500",
+            "priceCurrency": "CZK"
+          }
+        ]
+      }
+    }
+    </script>
 
     <style>
         /* --- BAREVNÁ TÉMATA --- */
@@ -28,7 +136,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: var(--body-font); color: var(--text-dark); background-color: var(--white); line-height: 1.7; transition: var(--transition); }
-        h1, h2, h3 { font-family: var(--heading-font); }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--heading-font); }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         /* --- UI PRVKY --- */
@@ -151,19 +259,23 @@
 </head>
 <body class="theme-natural">
 
-    <div class="theme-switcher">
+    <!-- Theme Switcher -->
+    <aside class="theme-switcher" role="complementary" aria-label="Výběr barevného tématu">
         <div class="theme-switcher-title">Vzhled webu</div>
         <div class="theme-buttons">
-            <button id="btn-natural" class="theme-btn active" onclick="setTheme('natural')"><span></span>Natural</button>
-            <button id="btn-ocean" class="theme-btn" onclick="setTheme('ocean')"><span></span>Oceán</button>
-            <button id="btn-terracotta" class="theme-btn" onclick="setTheme('terracotta')"><span></span>Terakota</button>
+            <button id="btn-natural" class="theme-btn active" onclick="setTheme('natural')" aria-label="Přepnout na přírodní téma"><span></span>Natural</button>
+            <button id="btn-ocean" class="theme-btn" onclick="setTheme('ocean')" aria-label="Přepnout na oceánské téma"><span></span>Oceán</button>
+            <button id="btn-terracotta" class="theme-btn" onclick="setTheme('terracotta')" aria-label="Přepnout na terakotové téma"><span></span>Terakota</button>
         </div>
-    </div>
+    </aside>
 
-    <header>
+    <!-- Header & Navigation -->
+    <header role="banner">
         <div class="container">
-            <nav>
-                <div class="logo">Masáže u Terry</div>
+            <nav role="navigation" aria-label="Hlavní navigace">
+                <div class="logo" itemscope itemtype="https://schema.org/Organization">
+                    <span itemprop="name">Masáže u Terry</span>
+                </div>
                 <ul>
                     <li><a href="#hero">Úvod</a></li>
                     <li><a href="#omne">O mně</a></li>
@@ -177,282 +289,374 @@
         </div>
     </header>
 
-    <!-- HERO -->
-    <section id="hero">
-        <div class="container hero-flex">
-            <div class="hero-text">
-                <h1>Masáže u Terry</h1>
-                <p>Dopřejte svému tělu hlubokou regeneraci a mysli zasloužený klid. Profesionální masérské služby na Praze 11.</p>
-                <a href="#rezervace" class="btn">Chci se objednat</a>
+    <!-- Main Content -->
+    <main role="main">
+        
+        <!-- HERO Section -->
+        <section id="hero" aria-labelledby="hero-heading">
+            <div class="container hero-flex">
+                <article class="hero-text">
+                    <h1 id="hero-heading">Masáže u Terry - Profesionální masérské služby Praha 11</h1>
+                    <p>Dopřejte svému tělu hlubokou regeneraci a mysli zasloužený klid. Profesionální masérské služby na Praze 11 - Háje. Certifikovaná masérka s dlouholetou praxí.</p>
+                    <a href="#rezervace" class="btn" aria-label="Přejít na rezervaci termínu">Chci se objednat</a>
+                </article>
+                <div class="hero-image">
+                    <img src="image_2.png" alt="Profesionální masérka Terry - Masáže Praha 11" width="400" height="533" loading="eager">
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="image_2.png" alt="Vaše masérka">
+        </section>
+
+        <!-- O MNĚ Section -->
+        <section id="omne" class="container" aria-labelledby="omne-heading">
+            <h2 id="omne-heading" class="section-title">O mně - Certifikovaná masérka</h2>
+            <article class="omne-content" itemscope itemtype="https://schema.org/Person">
+                <p>Pohyb, fungování lidského těla a přirozené způsoby, jak si ulevit od bolesti, mě fascinují už od dětství. Vždy jsem věřila, že tělo má obrovskou schopnost regenerace, pokud mu porozumíme a dáme mu správnou podporu.</p>
+                <p>V roce 2019 jsem absolvovala několik odborných kurzů a začala se naplno věnovat masážím. Během své praxe jsem spolupracovala s firemními klienty, mimo jiné ve společnosti H1 a ve společnosti Publicis Groupe.</p>
+                <p>Velmi cennou zkušeností pro mě byla spolupráce s <strong>Centrum Paraple</strong>, kde jsem pracovala s klienty po poranění míchy a s lidmi žijícími s paraplegií či kvadruplegií. Právě zde jsem získala hlubší porozumění fungování nervového systému, významu fasciálních struktur a souvislostem mezi dlouhodobým svalovým napětím, spasticitou, chronickou bolestí a omezením pohybu.</p>
+                <p>Tato zkušenost mě naučila vnímat lidské tělo komplexně – neřešit pouze místo bolesti, ale hledat její skutečnou příčinu a souvislosti v rámci celého pohybového aparátu.</p>
+                <p>Ve své praxi se specializuji na práci s <strong>fasciemi, svalovými dysbalancemi, přetížením, spazmy a funkčními obtížemi nervosvalového systému</strong>. Každý klient je pro mě jedinečný, a proto ke každému přistupuji individuálně a v širších souvislostech.</p>
+                <p>Mým cílem není pouze krátkodobá úleva nebo příjemný relaxační zážitek. Zaměřuji se na skutečnou pomoc a dlouhodobé výsledky. Moje masáže jsou intenzivnější a terapeuticky zaměřené – někdy mohou být v určitých místech citlivější či mírně bolestivé, vždy však s respektem k vašim možnostem a aktuálnímu stavu.</p>
+                <p>Zakládám si na přátelském přístupu, pečlivosti a důkladnosti. Věřím, že otevřená komunikace, vzájemná důvěra a individuální péče jsou základem úspěšné terapie.</p>
+                <p><strong>Pomohu vám lépe porozumět vašemu tělu, najít příčinu obtíží a vrátit se k pohybu bez bolesti.</strong></p>
+            </article>
+        </section>
+
+        <!-- CERTIFIKÁTY Section -->
+        <section id="certifikaty" class="container" aria-labelledby="certifikaty-heading">
+            <h3 id="certifikaty-heading" style="text-align: center; margin-bottom: 30px; font-family: var(--heading-font); font-size: 1.8rem; color: var(--primary);">Moje certifikáty a kvalifikace</h3>
+            <div class="certifikaty-grid">
+                
+                <a href="certifikaty/Dexter Academy 2.pdf" target="_blank" rel="noopener noreferrer" class="certifikat-item" aria-label="Certifikát Havajská masáž Lomi Lomi">
+                    <div class="pdf-icon" aria-hidden="true">📄</div>
+                    <div class="certifikat-info">
+                        <span>Havajská masáž (Lomi Lomi I)</span>
+                        <small>Dexter Academy | Otevřít (PDF)</small>
+                    </div>
+                </a>
+
+                <a href="certifikaty/Dexter Academy 3.pdf" target="_blank" rel="noopener noreferrer" class="certifikat-item" aria-label="Certifikát Lávové kameny Hot Stones">
+                    <div class="pdf-icon" aria-hidden="true">📄</div>
+                    <div class="certifikat-info">
+                        <span>Lávové kameny (Hot Stones I)</span>
+                        <small>Dexter Academy | Otevřít (PDF)</small>
+                    </div>
+                </a>
+
+                <a href="certifikaty/Dexter Academy 4.pdf" target="_blank" rel="noopener noreferrer" class="certifikat-item" aria-label="Certifikát Masér terapeut">
+                    <div class="pdf-icon" aria-hidden="true">📄</div>
+                    <div class="certifikat-info">
+                        <span>Masér terapeut (80 hod.)</span>
+                        <small>Dexter Academy | Otevřít (PDF)</small>
+                    </div>
+                </a>
+
+                <a href="certifikaty/Dexter Academy 5.pdf" target="_blank" rel="noopener noreferrer" class="certifikat-item" aria-label="Certifikát Přípravná sportovní masáž">
+                    <div class="pdf-icon" aria-hidden="true">📄</div>
+                    <div class="certifikat-info">
+                        <span>Přípravná sportovní masáž</span>
+                        <small>Dexter Academy | Otevřít (PDF)</small>
+                    </div>
+                </a>
+
+                <a href="certifikaty/Dexter Academy 6.pdf" target="_blank" rel="noopener noreferrer" class="certifikat-item" aria-label="Osvědčení MŠMT Sportovní masáž">
+                    <div class="pdf-icon" aria-hidden="true">📜</div>
+                    <div class="certifikat-info">
+                        <span>Osvědčení MŠMT – Sportovní masáž</span>
+                        <small>Celostátní kvalifikace (150 hod.) | PDF</small>
+                    </div>
+                </a>
+
+                <a href="certifikaty/KONDAKOV.pdf" target="_blank" rel="noopener noreferrer" class="certifikat-item" aria-label="Certifikát Structural Facial Modeling">
+                    <div class="pdf-icon" aria-hidden="true">📄</div>
+                    <div class="certifikat-info">
+                        <span>Structural & Plastic Facial Modeling</span>
+                        <small>Kondakov Massage Academy | PDF</small>
+                    </div>
+                </a>
+
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- O MNĚ -->
-    <section id="omne" class="container">
-        <h2 class="section-title">O mně</h2>
-        <div class="omne-content">
-            <p>Pohyb, fungování lidského těla a přirozené způsoby, jak si ulevit od bolesti, mě fascinují už od dětství. Vždy jsem věřila, že tělo má obrovskou schopnost regenerace, pokud mu porozumíme a dáme mu správnou podporu.</p>
-            <p>V roce 2019 jsem absolvovala několik odborných kurzů a začala se naplno věnovat masážím. Během své praxe jsem spolupracovala s firemními klienty, mimo jiné ve společnosti H1 a ve společnosti Publicis Groupe.</p>
-            <p>Velmi cennou zkušeností pro mě byla spolupráce s Centrum Paraple, kde jsem pracovala s klienty po poranění míchy a s lidmi žijícími s paraplegií či kvadruplegií. Právě zde jsem získala hlubší porozumění fungování nervového systému, významu fasciálních struktur a souvislostem mezi dlouhodobým svalovým napětím, spasticitou, chronickou bolestí a omezením pohybu.</p>
-            <p>Tato zkušenost mě naučila vnímat lidské tělo komplexně – neřešit pouze místo bolesti, ale hledat její skutečnou příčinu a souvislosti v rámci celého pohybového aparátu.</p>
-            <p>Ve své praxi se specializuji na práci s fasciemi, svalovými dysbalancemi, přetížením, spazmy a funkčními obtížemi nervosvalového systému. Každý klient je pro mě jedinečný, a proto ke každému přistupuji individuálně a v širších souvislostech.</p>
-            <p>Mým cílem není pouze krátkodobá úleva nebo příjemný relaxační zážitek. Zaměřuji se na skutečnou pomoc a dlouhodobé výsledky. Moje masáže jsou intenzivnější a terapeuticky zaměřené – někdy mohou být v určitých místech citlivější či mírně bolestivé, vždy však s respektem k vašim možnostem a aktuálnímu stavu.</p>
-            <p>Zakládám si na přátelském přístupu, pečlivosti a důkladnosti. Věřím, že otevřená komunikace, vzájemná důvěra a individuální péče jsou základem úspěšné terapie.</p>
-            <p>Pomohu vám lépe porozumět vašemu tělu, najít příčinu obtíží a vrátit se k pohybu bez bolesti.</p>
-        </div>
-    </section>
+        <!-- NABÍDKA SLUŽEB Section -->
+        <section id="sluzby" class="container" aria-labelledby="sluzby-heading">
+            <h2 id="sluzby-heading" class="section-title">Nabídka masáží - Ceník služeb</h2>
+            <div class="services-grid">
 
-    <!-- CERTIFIKÁTY -->
-    <section id="certifikaty" class="container">
-        <h3 style="text-align: center; margin-bottom: 30px; font-family: var(--heading-font); font-size: 1.8rem; color: var(--primary);">Moje certifikáty a kvalifikace</h3>
-        <div class="certifikaty-grid">
-            
-            <!-- Certifikát 1 -->
-            <a href="certifikaty/Dexter Academy 2.pdf" target="_blank" class="certifikat-item">
-                <div class="pdf-icon">📄</div>
-                <div class="certifikat-info">
-                    <span>Havajská masáž (Lomi Lomi I)</span>
-                    <small>Dexter Academy | Otevřít (PDF)</small>
+                <!-- Service 1 -->
+                <article class="service-card" onclick="toggleService(this)" itemscope itemtype="https://schema.org/Service">
+                    <div class="service-header">
+                        <h3 itemprop="name">Hloubková regenerační masáž</h3>
+                        <div class="service-info-mini">
+                            <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="price">1 300</span> <span itemprop="priceCurrency" content="CZK">Kč</span>
+                            </span>
+                            <small>45 min</small>
+                        </div>
+                    </div>
+                    <button class="btn-detail" aria-expanded="false">Více o masáži</button>
+                    <div class="service-detail">
+                        <div class="detail-content" itemprop="description">
+                            <p><strong>Hloubková regenerační masáž</strong> je kombinace několika technik a cílená práce s tělem. Pracuji opravdu intenzivně do hloubky, a díky tomu je ošetření velmi účinné a přináší <strong>dlouhodobou úlevu</strong>. Nezaměřuji se pouze na místo, kde cítíte bolest, ale hledám její <strong>skutečnou příčinu</strong> – protože právě tam začíná opravdová změna.</p>
+                            
+                            <p>Tato péče pomáhá ulevit od chronických potíží, zlepšuje flexibilitu a rozsah pohybu, podporuje regeneraci a zároveň přirozeně rozproudí lymfu. Tělo tak dostává prostor k hlubokému nastartování vlastních samoléčebných procesů a zároveň se posiluje jeho odolnost vůči přetížení i zraněním.</p>
+                            
+                            <p>Každé ošetření je pro mě spolupráce – naslouchám vašemu tělu i tomu, co mi během terapie ukazuje. Mým cílem není jen krátkodobá úleva, ale skutečná změna, kterou pocítíte v každodenním životě.</p>
+                            
+                            <p>Odcházet můžete s lehkostí, větší volností pohybu a pocitem, že vaše tělo dostalo přesně to, co potřebovalo.</p>
+                            
+                            <h4>Ve své praxi propojuji tyto techniky:</h4>
+                            <ul>
+                                <li><strong>Myofasciální uvolnění</strong> – cílená práce s fasciemi, která uvolňuje hluboké napětí a obnovuje přirozenou pohyblivost tkání</li>
+                                <li><strong>Trigger point (spoušťové body)</strong> – ošetření bolestivých bodů, které často způsobují potíže i v jiných částech těla</li>
+                                <li><strong>Měkké techniky</strong> – jemné, ale velmi efektivní uvolnění svalů, šlach a vazů</li>
+                                <li><strong>Lymfatické techniky</strong> – podpora toku lymfy, detoxikace a snížení otoků</li>
+                                <li><strong>Mobilizační techniky</strong> – navrací kloubům přirozený rozsah pohybu bez bolesti</li>
+                                <li><strong>Postizometrická relaxace (PIR)</strong> – práce se svalovým napětím pomocí jemné aktivace a následného uvolnění</li>
+                                <li><strong>Fasciální stretch a strečink</strong> – kombinace tlaku a protažení pro hlubší uvolnění a větší volnost pohybu</li>
+                                <li><strong>Neuromuskulární techniky</strong> – precizní práce se svaly a nervovým systémem pro lepší koordinaci a vnímání těla</li>
+                                <li><strong>Pasivní mobilizace</strong> – šetrné rozhýbání kloubů bez zátěže</li>
+                                <li><strong>Prvky Dornovy metody</strong> – jemné srovnání kloubů a páteře do přirozené polohy</li>
+                                <li><strong>Regresní masáž</strong> – práce s uloženým napětím v těle, které může mít hlubší (i psychický) původ, a jeho postupné uvolnění</li>
+                                <li><strong>Dechová a somatická práce</strong> – zapojení dechu a vnímání těla pro ještě hlubší efekt a uvolnění</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Service 2 -->
+                <article class="service-card" onclick="toggleService(this)" itemscope itemtype="https://schema.org/Service">
+                    <div class="service-header">
+                        <h3 itemprop="name">Breussova masáž s prvky Dornovy metody</h3>
+                        <div class="service-info-mini">
+                            <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="price">1 300</span> <span itemprop="priceCurrency" content="CZK">Kč</span>
+                            </span>
+                            <small>45 min</small>
+                        </div>
+                    </div>
+                    <button class="btn-detail" aria-expanded="false">Více o masáži</button>
+                    <div class="service-detail">
+                        <div class="detail-content" itemprop="description">
+                            <p>Tato kombinace představuje ucelenou péči, která vrací tělo do jeho přirozené rovnováhy bez bolesti. Využití <strong>prvků Dornovy metody umožňuje</strong> za vaší aktivní účasti (jemného pohybu) šetrně nasměrovat obratle a klouby na jejich správné místo.</p>
+                            <p>Navazující <strong>Breussova masáž je bezbolestná a jemná</strong>, přesto však <strong>velice intenzivní na energetické úrovni</strong>. Jde o hloubkový regenerační rituál, který působí jako balzám přímo na meziobratlové ploténky a nervovou soustavu. Tato technika dokáže okamžitě zklidnit mysl, odbourat hluboko uložený stres a nastartovat silné samoozdravné procesy v celém organismu.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Service 3 -->
+                <article class="service-card" onclick="toggleService(this)" itemscope itemtype="https://schema.org/Service">
+                    <div class="service-header">
+                        <h3 itemprop="name">Strukturální masáž obličeje a dekoltu / Faceform</h3>
+                        <div class="service-info-mini">
+                            <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="price">1 500</span> <span itemprop="priceCurrency" content="CZK">Kč</span>
+                            </span>
+                            <small>45 min</small>
+                        </div>
+                    </div>
+                    <button class="btn-detail" aria-expanded="false">Více o masáži</button>
+                    <div class="service-detail">
+                        <div class="detail-content" itemprop="description">
+                            <p>Strukturální masáž obličeje a dekoltu není jen běžná kosmetická masáž, ale intenzivní terapeutická metoda vycházející z poznatků čelistně-obličejové chirurgie a fyzioterapie. Masíruje se hlava, hrudník, šíje a obličej. Hloubková práce s mimickými svaly, fasciemi a lymfou. Zjemňování rýh a vrásek.</p>
+                            
+                            <h4>Estetický efekt jako výsledek zdraví</h4>
+                            <p>Díky uvolnění svalového napětí dochází k přirozenému faceliftu: Neřeším jen následek (vrásku), ale její příčinu v hlubokých strukturách. Alternativa k invazivním zákrokům.</p>
+
+                            <h4>Hlavní přínosy:</h4>
+                            <p>Uvolnění šíje a krční páteře. <strong>Uvolnění čelistního kloubu:</strong> Pomáhá při chronickém zatínání zubů a uvolňuje napětí žvýkacích svalů. <strong>Úleva od bolestí hlavy:</strong> Práce s fasciemi na lebce a úpony v oblasti týla zmírňuje tenzní bolesti. <strong>Svalová rovnováha:</strong> Koriguje asymetrie obličeje. <strong>Lymfatická drenáž:</strong> Aktivuje hloubkový odvod toxinů a zmírňuje otoky.</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" aria-labelledby="faq-heading">
+            <div class="container">
+                <h2 id="faq-heading" class="section-title">Často kladené dotazy</h2>
+                <div class="faq-container" itemscope itemtype="https://schema.org/FAQPage">
+                    
+                    <article class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <button class="faq-question" aria-expanded="false">
+                            <span itemprop="name">Jak se mám na masáž připravit?</span>
+                        </button>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Doporučuji cca hodinu před masáží nejíst těžká jídla. Vše potřebné pro vás bude připraveno u mě ve studiu.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <button class="faq-question" aria-expanded="false">
+                            <span itemprop="name">Co si mám vzít s sebou?</span>
+                        </button>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Vůbec nic. Ve studiu máte k dispozici čisté ručníky i prostěradla. Stačí přijít s dobrou náladou.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <button class="faq-question" aria-expanded="false">
+                            <span itemprop="name">Kdy není masáž vhodná (kontraindikace)?</span>
+                        </button>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Masáž prosím odložte, pokud se cítíte nemocní, máte horečku, infekční onemocnění nebo akutní záněty.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <button class="faq-question" aria-expanded="false">
+                            <span itemprop="name">Jak často bych měl/a na masáž chodit?</span>
+                        </button>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Pro preventivní účely doporučuji masáž 1x za měsíc. Při řešení blokád je vhodné přijít 1x za 14 dní.</p>
+                        </div>
+                    </article>
+                    
                 </div>
-            </a>
+            </div>
+        </section>
 
-            <!-- Certifikát 2 -->
-            <a href="certifikaty/Dexter Academy 3.pdf" target="_blank" class="certifikat-item">
-                <div class="pdf-icon">📄</div>
-                <div class="certifikat-info">
-                    <span>Lávové kameny (Hot Stones I)</span>
-                    <small>Dexter Academy | Otevřít (PDF)</small>
-                </div>
-            </a>
+        <!-- GALERIE Section -->
+        <section id="galerie-sekce" class="container" aria-labelledby="galerie-heading">
+            <h2 id="galerie-heading" class="section-title" style="margin-bottom: 40px;">Galerie studia</h2>
+            <div class="gallery-wrapper">
+                <button class="nav-arrow arrow-prev" onclick="moveGallery(-1)" aria-label="Předchozí obrázek">❮</button>
+                <div class="gallery-container" id="gallery-root" role="region" aria-label="Fotogalerie masážního studia"></div>
+                <button class="nav-arrow arrow-next" onclick="moveGallery(1)" aria-label="Následující obrázek">❯</button>
+            </div>
+        </section>
 
-            <!-- Certifikát 3 -->
-            <a href="certifikaty/Dexter Academy 4.pdf" target="_blank" class="certifikat-item">
-                <div class="pdf-icon">📄</div>
-                <div class="certifikat-info">
-                    <span>Masér terapeut (80 hod.)</span>
-                    <small>Dexter Academy | Otevřít (PDF)</small>
-                </div>
-            </a>
-
-            <!-- Certifikát 4 -->
-            <a href="certifikaty/Dexter Academy 5.pdf" target="_blank" class="certifikat-item">
-                <div class="pdf-icon">📄</div>
-                <div class="certifikat-info">
-                    <span>Přípravná sportovní masáž</span>
-                    <small>Dexter Academy | Otevřít (PDF)</small>
-                </div>
-            </a>
-
-            <!-- Certifikát 5 -->
-            <a href="certifikaty/Dexter Academy 6.pdf" target="_blank" class="certifikat-item">
-                <div class="pdf-icon">📜</div>
-                <div class="certifikat-info">
-                    <span>Osvědčení MŠMT – Sportovní masáž</span>
-                    <small>Celostátní kvalifikace (150 hod.) | PDF</small>
-                </div>
-            </a>
-
-            <!-- Certifikát 6 -->
-            <a href="certifikaty/KONDAKOV.pdf" target="_blank" class="certifikat-item">
-                <div class="pdf-icon">📄</div>
-                <div class="certifikat-info">
-                    <span>Structural & Plastic Facial Modeling</span>
-                    <small>Kondakov Massage Academy | PDF</small>
-                </div>
-            </a>
-
-        </div>
-    </section>
-
-    <!-- NABÍDKA SLUŽEB -->
-    <section id="sluzby" class="container">
-        <h2 class="section-title">Nabídka masáží</h2>
-        <div class="services-grid">
-
-            <!-- 1. HLOUBKOVÁ -->
-            <div class="service-card" onclick="toggleService(this)">
-                <div class="service-header">
-                    <h3>Hloubková regenerační masáž</h3>
-                    <div class="service-info-mini">
-                        <span class="price">1 300 Kč</span>
-                        <small>45 min</small>
+        <!-- REZERVACE Section -->
+        <section id="rezervace" aria-labelledby="rezervace-heading">
+            <div class="container">
+                <h2 id="rezervace-heading" class="section-title">Rezervace termínu</h2>
+                <div class="reservation-box">
+                    <div>
+                        <a href="tel:+420728562001" class="btn" aria-label="Zavolat na telefonní číslo 728 562 001">Rezervovat telefonicky: 728 562 001</a>
                     </div>
                 </div>
-                <button class="btn-detail">Více o masáži</button>
-                <div class="service-detail">
-                    <div class="detail-content">
-                        <p><strong>Hloubková regenerační masáž</strong> je kombinace několika technik a cílená práce s tělem. Pracuji opravdu intenzivně do hloubky, a díky tomu je ošetření velmi účinné a přináší <strong>dlouhodobou úlevu</strong>. Nezaměřuji se pouze na místo, kde cítíte bolest, ale hledám její <strong>skutečnou příčinu</strong> – protože právě tam začíná opravdová změna.</p>
-                        
-                        <p>Tato péče pomáhá ulevit od chronických potíží, zlepšuje flexibilitu a rozsah pohybu, podporuje regeneraci a zároveň přirozeně rozproudí lymfu. Tělo tak dostává prostor k hlubokému nastartování vlastních samoléčebných procesů a zároveň se posiluje jeho odolnost vůči přetížení i zraněním.</p>
-                        
-                        <p>Každé ošetření je pro mě spolupráce – naslouchám vašemu tělu i tomu, co mi během terapie ukazuje. Mým cílem není jen krátkodobá úleva, ale skutečná změna, kterou pocítíte v každodenním životě.</p>
-                        
-                        <p>Odcházet můžete s lehkostí, větší volností pohybu a pocitem, že vaše tělo dostalo přesně to, co potřebovalo.</p>
-                        
-                        <h4>Ve své praxi propojuji tyto techniky:</h4>
-                        <ul>
-                            <li><strong>Myofasciální uvolnění</strong> – cílená práce s fasciemi, která uvolňuje hluboké napětí a obnovuje přirozenou pohyblivost tkání</li>
-                            <li><strong>Trigger point (spoušťové body)</strong> – ošetření bolestivých bodů, které často způsobují potíže i v jiných částech těla</li>
-                            <li><strong>Měkké techniky</strong> – jemné, ale velmi efektivní uvolnění svalů, šlach a vazů</li>
-                            <li><strong>Lymfatické techniky</strong> – podpora toku lymfy, detoxikace a snížení otoků</li>
-                            <li><strong>Mobilizační techniky</strong> – navrací kloubům přirozený rozsah pohybu bez bolesti</li>
-                            <li><strong>Postizometrická relaxace (PIR)</strong> – práce se svalovým napětím pomocí jemné aktivace a následného uvolnění</li>
-                            <li><strong>Fasciální stretch a strečink</strong> – kombinace tlaku a protažení pro hlubší uvolnění a větší volnost pohybu</li>
-                            <li><strong>Neuromuskulární techniky</strong> – precizní práce se svaly a nervovým systémem pro lepší koordinaci a vnímání těla</li>
-                            <li><strong>Pasivní mobilizace</strong> – šetrné rozhýbání kloubů bez zátěže</li>
-                            <li><strong>Prvky Dornovy metody</strong> – jemné srovnání kloubů a páteře do přirozené polohy</li>
-                            <li><strong>Regresní masáž</strong> – práce s uloženým napětím v těle, které může mít hlubší (i psychický) původ, a jeho postupné uvolnění</li>
-                            <li><strong>Dechová a somatická práce</strong> – zapojení dechu a vnímání těla pro ještě hlubší efekt a uvolnění</li>
-                        </ul>
-                    </div>
+            </div>
+        </section>
+
+        <!-- KONTAKT Section -->
+        <section id="kontakt" class="container" aria-labelledby="kontakt-heading" itemscope itemtype="https://schema.org/LocalBusiness">
+            <h2 id="kontakt-heading" class="section-title">Kontakt a lokalita</h2>
+            <div class="kontakt-grid">
+                <div class="kontakt-info">
+                    <p><strong>Adresa:</strong><br> 
+                        <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                            <span itemprop="streetAddress">Hekrova 4</span>, 
+                            <span itemprop="postalCode">149 00</span> 
+                            <span itemprop="addressLocality">Praha 11-Háje</span>
+                        </span>
+                    </p>
+                    <p><strong>Telefon:</strong><br> 
+                        <a href="tel:+420728562001" itemprop="telephone">+420 728 562 001</a>
+                    </p>
+                    <p><strong>E-mail:</strong><br> 
+                        <a href="mailto:info@masazeuterry.cz" itemprop="email">info@masazeuterry.cz</a>
+                    </p>
+                    <br>
+                    <p><em>Dostupnost: 5 minut chůze od metra Háje (linka C). Bezproblémové parkování přímo v ulici Hekrova.</em></p>
+                </div>
+                <div class="mapa-box">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Hekrova%204%2C%20Praha%2011&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        title="Mapa umístění Masáže u Terry - Hekrova 4, Praha 11"
+                        aria-label="Interaktivní mapa zobrazující polohu masážního studia">
+                    </iframe>
                 </div>
             </div>
+        </section>
 
-            <!-- 2. BREUSSOVA -->
-            <div class="service-card" onclick="toggleService(this)">
-                <div class="service-header">
-                    <h3>Breussova masáž s prvky Dornovy metody</h3>
-                    <div class="service-info-mini">
-                        <span class="price">1 300 Kč</span>
-                        <small>45 min</small>
-                    </div>
-                </div>
-                <button class="btn-detail">Více o masáži</button>
-                <div class="service-detail">
-                    <div class="detail-content">
-                        <p>Tato kombinace představuje ucelenou péči, která vrací tělo do jeho přirozené rovnováhy bez bolesti. Využití <strong>prvků Dornovy metody umožňuje</strong> za vaší aktivní účasti (jemného pohybu) šetrně nasměrovat obratle a klouby na jejich správné místo.</p>
-                        <p>Navazující <strong>Breussova masáž je bezbolestná a jemná</strong>, přesto však <strong>velice intenzivní na energetické úrovni</strong>. Jde o hloubkový regenerační rituál, který působí jako balzám přímo na meziobratlové ploténky a nervovou soustavu. Tato technika dokáže okamžitě zklidnit mysl, odbourat hluboko uložený stres a nastartovat silné samoozdravné procesy v celém organismu.</p>
-                    </div>
-                </div>
-            </div>
+    </main>
 
-            <!-- 3. OBLIČEJ -->
-            <div class="service-card" onclick="toggleService(this)">
-                <div class="service-header">
-                    <h3>Strukturální masáž obličeje a dekoltu / Faceform</h3>
-                    <div class="service-info-mini">
-                        <span class="price">1 500 Kč</span>
-                        <small>45 min</small>
-                    </div>
-                </div>
-                <button class="btn-detail">Více o masáži</button>
-                <div class="service-detail">
-                    <div class="detail-content">
-                        <p>Strukturální masáž obličeje a dekoltu není jen běžná kosmetická masáž, ale intenzivní terapeutická metoda vycházející z poznatků čelistně-obličejové chirurgie a fyzioterapie. Masíruje se hlava, hrudník, šíje a obličej. Hloubková práce s mimickými svaly, fasciemi a lymfou. Zjemňování rýh a vrásek.</p>
-                        
-                        <h4>Estetický efekt jako výsledek zdraví</h4>
-                        <p>Díky uvolnění svalového napětí dochází k přirozenému faceliftu: Neřeším jen následek (vrásku), ale její příčinu v hlubokých strukturách. Alternativa k invazivním zákrokům.</p>
-
-                        <h4>Hlavní přínosy:</h4>
-                        <p>Uvolnění šíje a krční páteře. <strong>Uvolnění čelistního kloubu:</strong> Pomáhá při chronickém zatínání zubů a uvolňuje napětí žvýkacích svalů. <strong>Úleva od bolestí hlavy:</strong> Práce s fasciemi na lebce a úpony v oblasti týla zmírňuje tenzní bolesti. <strong>Svalová rovnováha:</strong> Koriguje asymetrie obličeje. <strong>Lymfatická drenáž:</strong> Aktivuje hloubkový odvod toxinů a zmírňuje otoky.</p>
-                        
-                        <h4>Estetický efekt jako výsledek zdraví</h4>
-                        <p>Díky uvolnění svalového napětí dochází k přirozenému faceliftu: Neřeším jen následek (vrásku), ale její příčinu v hlubokých strukturách.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-        <div class="container">
-            <h2 class="section-title">Často kladené dotazy</h2>
-            <div class="faq-container">
-                <div class="faq-item"><button class="faq-question">Jak se mám na masáž připravit?</button><div class="faq-answer">Doporučuji cca hodinu před masáží nejíst těžká jídla. Vše potřebné pro vás bude připraveno u mě ve studiu.</div></div>
-                <div class="faq-item"><button class="faq-question">Co si mám vzít s sebou?</button><div class="faq-answer">Vůbec nic. Ve studiu máte k dispozici čisté ručníky i prostěradla. Stačí přijít s dobrou náladou.</div></div>
-                <div class="faq-item"><button class="faq-question">Kdy není masáž vhodná (kontraindikace)?</button><div class="faq-answer">Masáž prosím odložte, pokud se cítíte nemocní, máte horečku, infekční onemocnění nebo akutní záněty.</div></div>
-                <div class="faq-item"><button class="faq-question">Jak často bych měl/a na masáž chodit?</button><div class="faq-answer">Pro preventivní účely doporučuji masáž 1x za měsíc. Při řešení blokád je vhodné přijít 1x za 14 dní.</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GALERIE -->
-    <section id="galerie-sekce" class="container">
-        <div class="gallery-wrapper">
-            <button class="nav-arrow arrow-prev" onclick="moveGallery(-1)">❮</button>
-            <div class="gallery-container" id="gallery-root"></div>
-            <button class="nav-arrow arrow-next" onclick="moveGallery(1)">❯</button>
-        </div>
-    </section>
-
-    <!-- REZERVACE -->
-    <section id="rezervace">
-        <div class="container">
-            <h2 class="section-title">Rezervace termínu</h2>
-            <div class="reservation-box">
-                <div>
-                    <a href="tel:+420728562001" class="btn">Rezervovat telefonicky: 728 562 001</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KONTAKT -->
-    <section id="kontakt" class="container">
-        <div class="kontakt-grid">
-            <div class="kontakt-info">
-                <p><strong>Adresa:</strong><br> Hekrova 4, 149 00 Praha 11-Háje</p>
-                <p><strong>Telefon:</strong><br> <a href="tel:+420728562001">728 562 001</a></p>
-                <p><strong>E-mail:</strong><br> <a href="mailto:info@masazeuterry.cz">info@masazeuterry.cz</a></p>
-                <br>
-                <p><em>Dostupnost: 5 minut chůze od metra Háje (linka C). Bezproblémové parkování přímo v ulici Hekrova.</em></p>
-            </div>
-            <div class="mapa-box">
-                <iframe src="https://maps.google.com/maps?q=Hekrova%204%2C%20Praha%2011&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <!-- Footer -->
+    <footer role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
         <div class="container">
             <div class="logo">Masáže u Terry</div>
-            <p>Hekrova 4, 149 00 Praha 11-Háje</p>
-            <p>Tel: <a href="tel:+420728562001">728 562 001</a> | <a href="podminky.html" target="_blank">Obchodní podmínky</a></p>
-            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">© 2026 Masáže u Terry.</p>
+            <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Hekrova 4</span>, 
+                <span itemprop="postalCode">149 00</span> 
+                <span itemprop="addressLocality">Praha 11-Háje</span>
+            </p>
+            <p>Tel: <a href="tel:+420728562001" itemprop="telephone">728 562 001</a> | <a href="podminky.html" target="_blank" rel="noopener">Obchodní podmínky</a></p>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">© 2026 Masáže u Terry. Všechna práva vyhrazena.</p>
         </div>
     </footer>
 
-    <script>
+    <!-- JavaScript - Defer for better performance -->
+    <script defer>
+        // Theme Switcher
         function setTheme(themeName) {
             document.body.className = 'theme-' + themeName;
             document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
             const targetBtn = document.getElementById('btn-' + themeName);
-            if(targetBtn) targetBtn.classList.add('active');
+            if(targetBtn) {
+                targetBtn.classList.add('active');
+                // Save preference
+                localStorage.setItem('selectedTheme', themeName);
+            }
         }
 
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if(savedTheme) {
+                setTheme(savedTheme);
+            }
+        });
+
+        // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                faqItems.forEach(el => el.classList.remove('active'));
-                if (!isActive) item.classList.add('active');
+                faqItems.forEach(el => {
+                    el.classList.remove('active');
+                    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                    question.setAttribute('aria-expanded', 'true');
+                }
             });
         });
 
+        // Service Cards Toggle
         function toggleService(card) {
+            const isOpen = card.classList.contains('open');
             card.classList.toggle('open');
             const btn = card.querySelector('.btn-detail');
             btn.textContent = card.classList.contains('open') ? 'Méně informací' : 'Více o masáži';
+            btn.setAttribute('aria-expanded', card.classList.contains('open'));
         }
 
-        const seznamFotek = ['Galerie/foto1.png', 'Galerie/foto2.png', 'Galerie/foto3.png', 'Galerie/foto4.png', 'Galerie/foto5.png'];
+        // Gallery
+        const seznamFotek = [
+            'Galerie/foto1.png', 
+            'Galerie/foto2.png', 
+            'Galerie/foto3.png', 
+            'Galerie/foto4.png', 
+            'Galerie/foto5.png'
+        ];
         const galleryRoot = document.getElementById('gallery-root');
         const prevBtn = document.querySelector('.arrow-prev');
         const nextBtn = document.querySelector('.arrow-next');
 
         function initGallery() {
             if(!galleryRoot) return;
-            seznamFotek.forEach(src => {
+            seznamFotek.forEach((src, index) => {
                 const item = document.createElement('div');
                 item.className = 'gallery-item';
-                item.innerHTML = `<img src="${src}" alt="Studio">`;
+                item.innerHTML = `<img src="${src}" alt="Masážní studio Terry - fotografie ${index + 1}" loading="lazy" width="350" height="380">`;
                 galleryRoot.appendChild(item);
             });
             if (seznamFotek.length > 3) {
@@ -466,7 +670,22 @@
             galleryRoot.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
         }
 
-        initGallery();
+        // Initialize gallery on load
+        window.addEventListener('DOMContentLoaded', initGallery);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
