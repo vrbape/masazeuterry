@@ -332,6 +332,14 @@
             max-width: 540px;
         }
 
+        /* Hero buttons container */
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .hero-image {
             position: relative;
             animation: fadeInRight 0.8s ease-out 0.2s both;
@@ -396,6 +404,32 @@
         .btn-secondary:hover {
             background: var(--primary);
             color: var(--white);
+        }
+
+        /* Menší tlačítko pro recenze */
+        .btn-review {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 50px;
+            border: 2px solid var(--primary-light);
+            cursor: pointer;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-sm);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-review:hover {
+            background: var(--primary-light);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* --- SEKCE NADPISY --- */
@@ -863,6 +897,15 @@
                 max-height: 450px;
             }
 
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-review {
+                justify-content: center;
+            }
+
             .kontakt-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -956,10 +999,16 @@
                     <div class="hero-subtitle">Profesionální péče o vaše tělo</div>
                     <h1 id="hero-heading">Masáže u Terry</h1>
                     <p>Dopřejte svému tělu hlubokou regeneraci a mysli zasloužený klid. Certifikovaná masérka s dlouholetou praxí v Praze 11 - Háje.</p>
-                    <a href="#rezervace" class="btn" aria-label="Přejít na rezervaci termínu">
-                        <span>Chci se objednat</span>
-                        <span>→</span>
-                    </a>
+                    <div class="hero-buttons">
+                        <a href="#rezervace" class="btn" aria-label="Přejít na rezervaci termínu">
+                            <span>Chci se objednat</span>
+                            <span>→</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/qMiyfLPJZAYFyXtb8" target="_blank" rel="noopener noreferrer" class="btn-review" aria-label="Zobrazit recenze na Google">
+                            <span>⭐</span>
+                            <span>Recenze na Google</span>
+                        </a>
+                    </div>
                 </article>
                 <div class="hero-image">
                     <img src="image_2.png" 
