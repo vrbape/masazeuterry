@@ -40,7 +40,7 @@
     <!-- Google Fonts - Optimalizováno -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -118,142 +118,817 @@
     </script>
 
     <style>
-        /* --- BAREVNÁ TÉMATA - TERAKOTA --- */
+        /* === MODERNÍ REDESIGN === */
+        
+        /* --- BAREVNÁ PALETA --- */
         :root {
-            --heading-font: 'Playfair Display', serif;
-            --body-font: 'Montserrat', sans-serif;
+            /* Fonty */
+            --heading-font: 'Cormorant Garamond', serif;
+            --body-font: 'Inter', sans-serif;
+            
+            /* Barvy - Terakota paleta */
+            --primary: #c97064;
+            --primary-dark: #a85a4f;
+            --primary-light: #e8a599;
+            --secondary: #faf7f5;
+            --accent: #d4a574;
+            
+            /* Neutrální barvy */
             --white: #ffffff;
-            --text-dark: #333333;
-            --text-light: #777777;
-            --transition: 0.4s ease;
-            --primary: #b35a44;
-            --secondary: #fdf1e1;
-            --btn-hover: #8f4836;
-            --border: #e8d0bd;
-            --footer-overlay: rgba(60, 30, 20, 0.9);
+            --off-white: #fdfcfb;
+            --text-dark: #2c2c2c;
+            --text-medium: #5a5a5a;
+            --text-light: #8a8a8a;
+            --border-light: #e8e4e0;
+            --border-medium: #d4cec7;
+            
+            /* Stíny */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+            
+            /* Přechody */
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --gradient-soft: linear-gradient(135deg, var(--secondary) 0%, var(--off-white) 100%);
+            
+            /* Animace */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--body-font); color: var(--text-dark); background-color: var(--white); line-height: 1.7; }
-        h1, h2, h3, h4, h5, h6 { font-family: var(--heading-font); }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--text-dark);
+            background-color: var(--off-white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+        p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
         /* --- NAVIGACE --- */
-        header { background: var(--white); padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.4rem; font-weight: bold; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
-        nav ul { display: flex; list-style: none; gap: 20px; }
-        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); }
-        nav a:hover { color: var(--primary); }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition-base);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            position: relative;
+            transition: var(--transition-fast);
+            letter-spacing: 0.3px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition-base);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
 
         /* --- HERO SEKCE --- */
-        #hero { padding: 80px 0; background-color: var(--secondary); }
-        .hero-flex { display: flex; align-items: center; gap: 40px; }
-        .hero-text { flex: 1.2; }
-        .hero-image { flex: 0.8; text-align: right; }
-        .hero-image img { 
-            width: auto; 
-            max-height: 500px;
+        #hero {
+            padding: 10rem 0 6rem;
+            background: var(--gradient-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201, 112, 100, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-flex {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-text {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            max-width: 540px;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 0.8s ease-out 0.2s both;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-height: 550px;
             aspect-ratio: 2 / 3;
             object-fit: cover;
-            border-radius: 4px; 
-            box-shadow: 15px 15px 0 var(--primary); 
-            transition: var(--transition); 
+            border-radius: 8px;
+            box-shadow: var(--shadow-xl);
         }
-        h1 { font-size: 3.2rem; color: var(--primary); margin-bottom: 20px; line-height: 1.1; }
-        .btn { display: inline-block; padding: 15px 35px; background: var(--primary); color: white; text-decoration: none; font-weight: bold; margin-top: 25px; border-radius: 2px; transition: var(--transition); }
-        .btn:hover { background: var(--btn-hover); transform: translateY(-2px); }
 
-        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--primary); }
+        /* --- TLAČÍTKA --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+            letter-spacing: 0.3px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* --- SEKCE NADPISY --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         /* --- O MNĚ SEKCE --- */
-        #omne { padding: 80px 0 40px 0; background-color: var(--white); }
-        .omne-content { max-width: 800px; margin: 0 auto; }
-        .omne-content p { margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+        #omne {
+            padding: 6rem 0;
+            background: var(--white);
+        }
 
-        /* --- CERTIFIKÁTY SEKCE --- */
-        #certifikaty { padding: 40px 0 80px 0; background-color: var(--white); }
-        .certifikaty-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
-        .certifikat-item { display: flex; align-items: center; gap: 15px; padding: 15px 20px; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; color: var(--text-dark); transition: var(--transition); background: var(--white); }
-        .certifikat-item:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .pdf-icon { font-size: 1.8rem; color: #de423b; font-weight: bold; display: flex; align-items: center; }
-        .certifikat-info { display: flex; flex-direction: column; }
-        .certifikat-info span { font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
-        .certifikat-info small { color: var(--text-light); font-size: 0.8rem; margin-top: 2px; }
+        .omne-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .omne-content p {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .omne-content p:first-of-type::first-letter {
+            font-size: 3.5rem;
+            font-family: var(--heading-font);
+            float: left;
+            line-height: 1;
+            margin: 0.1rem 0.5rem 0 0;
+            color: var(--primary);
+        }
+
+        /* --- CERTIFIKÁTY --- */
+        #certifikaty {
+            padding: 6rem 0;
+            background: var(--secondary);
+        }
+
+        .certifikaty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .certifikat-item {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            transition: var(--transition-base);
+        }
+
+        .certifikat-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pdf-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .certifikat-info span {
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+
+        .certifikat-info small {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
 
         /* --- SLUŽBY --- */
-        #sluzby { padding: 80px 0; background-color: var(--white); }
-        .services-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 900px; margin: 0 auto; }
-        .service-card { padding: 30px; border: 1px solid var(--border); transition: var(--transition); background: var(--white); border-radius: 8px; cursor: pointer; }
-        .service-card:hover { border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .service-header { display: flex; justify-content: space-between; align-items: center; }
-        .service-header h3 { color: var(--primary); font-size: 1.6rem; line-height: 1.2; }
-        .service-info-mini { text-align: right; min-width: 130px; }
-        .price { display: block; font-weight: bold; font-size: 1.3rem; color: var(--primary); }
-        .service-detail { max-height: 0; overflow: hidden; transition: max-height 0.6s ease; border-top: 0px solid var(--border); }
-        .service-card.open .service-detail { max-height: 3500px; margin-top: 20px; padding-top: 20px; border-top-width: 1px; }
-        .btn-detail { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 6px 15px; cursor: pointer; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-top: 15px; transition: 0.3s; }
-        .service-card.open .btn-detail { background: var(--primary); color: var(--white); }
-        
-        .detail-content p { margin-bottom: 15px; font-size: 1rem; color: var(--text-dark); }
-        .detail-content h4 { margin: 25px 0 10px 0; color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .detail-content ul { margin-left: 20px; margin-bottom: 20px; }
-        .detail-content li { margin-bottom: 10px; font-size: 0.95rem; list-style-type: none; border-left: 2px solid var(--primary); padding-left: 15px; }
-        .detail-content li strong { color: var(--text-dark); }
+        #sluzby {
+            padding: 6rem 0;
+            background: var(--white);
+        }
 
-        /* --- FAQ SEKCE --- */
-        #faq { padding: 80px 0; background-color: var(--secondary); }
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--white); margin-bottom: 12px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-        .faq-question { padding: 18px; width: 100%; text-align: left; background: none; border: none; cursor: pointer; font-family: var(--body-font); font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-        .faq-question::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
-        .faq-item.active .faq-question::after { content: '-'; }
-        .faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.95rem; color: var(--text-light); }
-        .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 18px; }
+        .services-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-header h3 {
+            color: var(--primary-dark);
+            flex: 1;
+        }
+
+        .service-info-mini {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: var(--heading-font);
+            display: block;
+            line-height: 1;
+        }
+
+        .service-info-mini small {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .btn-detail {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-top: 1rem;
+        }
+
+        .btn-detail:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .service-card.open .btn-detail {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .service-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card.open .service-detail {
+            max-height: 4000px;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .detail-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+        }
+
+        .detail-content h4 {
+            margin: 2rem 0 1rem;
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+        }
+
+        .detail-content ul {
+            margin: 1.5rem 0;
+            padding-left: 0;
+        }
+
+        .detail-content li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary-light);
+            list-style: none;
+            transition: var(--transition-fast);
+        }
+
+        .detail-content li:hover {
+            border-left-color: var(--primary);
+            padding-left: 2rem;
+        }
+
+        /* --- FAQ --- */
+        #faq {
+            padding: 6rem 0;
+            background: var(--secondary);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-light);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border: none;
+            text-align: left;
+            font-family: var(--body-font);
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 300;
+            transition: var(--transition-base);
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
 
         /* --- REZERVACE --- */
-        #rezervace { padding: 80px 0; background-color: var(--secondary); }
-        .reservation-box { width: 100%; min-height: 200px; background: white; border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px; }
-
-        /* --- KONTAKT A MAPA --- */
-        #kontakt { padding: 80px 0; }
-        .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .kontakt-info p { margin-bottom: 15px; }
-        .kontakt-info a { color: var(--primary); font-weight: bold; text-decoration: none; }
-        .kontakt-info a:hover { text-decoration: underline; }
-        .mapa-box { height: 400px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-        .google-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-        .btn-secondary { display: inline-block; padding: 12px 25px; background: var(--white); color: var(--primary); border: 2px solid var(--primary); text-decoration: none; font-weight: bold; border-radius: 2px; transition: var(--transition); text-align: center; }
-        .btn-secondary:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
-
-        /* --- PATIČKA --- */
-        footer {
-            background: linear-gradient(var(--footer-overlay), var(--footer-overlay)), url('Galerie/footer.png');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            color: #ffffff; padding: 70px 0; text-align: center; font-size: 0.9rem;
+        #rezervace {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
         }
-        footer .logo { font-size: 1.5rem; color: var(--white); margin-bottom: 20px; letter-spacing: 2px; }
-        footer a { color: #ffffff !important; font-weight: 600; text-decoration: none; }
 
-        @media (max-width: 768px) {
-            .hero-flex, .kontakt-grid { flex-direction: column; text-align: center; }
-            .hero-image { order: -1; margin-bottom: 30px; }
-            .hero-image img { 
+        #rezervace .section-title {
+            color: var(--white);
+        }
+
+        #rezervace .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .reservation-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .reservation-box .btn {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .reservation-box .btn:hover {
+            background: var(--off-white);
+            transform: translateY(-2px);
+        }
+
+        /* --- KONTAKT --- */
+        #kontakt {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .kontakt-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .kontakt-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.0625rem;
+        }
+
+        .kontakt-info strong {
+            color: var(--text-dark);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .kontakt-info a {
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+
+        .kontakt-info a:hover {
+            color: var(--primary-dark);
+        }
+
+        .google-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .mapa-box {
+            height: 450px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+        }
+
+        .mapa-box iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: linear-gradient(rgba(44, 44, 44, 0.95), rgba(44, 44, 44, 0.98)), url('Galerie/footer.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        footer .logo {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: var(--white);
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+
+        footer a:hover {
+            color: var(--primary-light);
+        }
+
+        /* --- ANIMACE --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* --- RESPONZIVITA --- */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            #hero {
+                padding: 8rem 0 4rem;
+            }
+
+            .hero-flex {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image img {
+                max-height: 450px;
+            }
+
+            .kontakt-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .service-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .service-info-mini {
+                text-align: left;
+            }
+
+            .certifikaty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            footer {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #hero {
+                padding: 7rem 0 3rem;
+            }
+
+            .hero-image img {
                 max-height: 380px;
             }
-            nav ul { display: none; }
-            h1 { font-size: 2.4rem; }
-            .service-header { flex-direction: column; text-align: center; gap: 10px; }
-            .certifikaty-grid { grid-template-columns: 1fr; }
-            footer { background-attachment: scroll; }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .faq-question {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .reservation-box {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* --- SCROLL REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
     <!-- Header & Navigation -->
-    <header role="banner">
+    <header role="banner" id="header">
         <div class="container">
             <nav role="navigation" aria-label="Hlavní navigace">
                 <div class="logo" itemscope itemtype="https://schema.org/Organization">
@@ -278,9 +953,13 @@
         <section id="hero" aria-labelledby="hero-heading">
             <div class="container hero-flex">
                 <article class="hero-text">
-                    <h1 id="hero-heading">Masáže u Terry - Profesionální masérské služby Praha 11</h1>
-                    <p>Dopřejte svému tělu hlubokou regeneraci a mysli zasloužený klid. Profesionální masérské služby na Praze 11 - Háje. Certifikovaná masérka s dlouholetou praxí.</p>
-                    <a href="#rezervace" class="btn" aria-label="Přejít na rezervaci termínu">Chci se objednat</a>
+                    <div class="hero-subtitle">Profesionální péče o vaše tělo</div>
+                    <h1 id="hero-heading">Masáže u Terry</h1>
+                    <p>Dopřejte svému tělu hlubokou regeneraci a mysli zasloužený klid. Certifikovaná masérka s dlouholetou praxí v Praze 11 - Háje.</p>
+                    <a href="#rezervace" class="btn" aria-label="Přejít na rezervaci termínu">
+                        <span>Chci se objednat</span>
+                        <span>→</span>
+                    </a>
                 </article>
                 <div class="hero-image">
                     <img src="image_2.png" 
@@ -293,8 +972,9 @@
         </section>
 
         <!-- O MNĚ Section -->
-        <section id="omne" class="container" aria-labelledby="omne-heading">
-            <h2 id="omne-heading" class="section-title">O mně - Certifikovaná masérka</h2>
+        <section id="omne" class="container reveal" aria-labelledby="omne-heading">
+            <h2 id="omne-heading" class="section-title">O mně</h2>
+            <p class="section-subtitle">Certifikovaná masérka s individuálním přístupem</p>
             <article class="omne-content" itemscope itemtype="https://schema.org/Person">
                 <p>Pohyb, fungování lidského těla a přirozené způsoby, jak si ulevit od bolesti, mě fascinují už od dětství. Vždy jsem věřila, že tělo má obrovskou schopnost regenerace, pokud mu porozumíme a dáme mu správnou podporu.</p>
                 <p>V roce 2019 jsem absolvovala několik odborných kurzů a začala se naplno věnovat masážím. Během své praxe jsem spolupracovala s firemními klienty, mimo jiné ve společnosti H1 a ve společnosti Publicis Groupe.</p>
@@ -308,15 +988,16 @@
         </section>
 
         <!-- CERTIFIKÁTY Section -->
-        <section id="certifikaty" class="container" aria-labelledby="certifikaty-heading">
-            <h3 id="certifikaty-heading" style="text-align: center; margin-bottom: 30px; font-family: var(--heading-font); font-size: 1.8rem; color: var(--primary);">Moje certifikáty a kvalifikace</h3>
+        <section id="certifikaty" class="container reveal" aria-labelledby="certifikaty-heading">
+            <h2 id="certifikaty-heading" class="section-title">Certifikáty a kvalifikace</h2>
+            <p class="section-subtitle">Odborné vzdělání a certifikace</p>
             <div class="certifikaty-grid">
                 
                 <a href="certifikaty/Dexter Academy 2.pdf" target="_blank" rel="noopener noreferrer" class="certifikat-item" aria-label="Certifikát Havajská masáž Lomi Lomi">
                     <div class="pdf-icon" aria-hidden="true">📄</div>
                     <div class="certifikat-info">
                         <span>Havajská masáž (Lomi Lomi I)</span>
-                        <small>Dexter Academy | Otevřít (PDF)</small>
+                        <small>Dexter Academy</small>
                     </div>
                 </a>
 
@@ -324,7 +1005,7 @@
                     <div class="pdf-icon" aria-hidden="true">📄</div>
                     <div class="certifikat-info">
                         <span>Lávové kameny (Hot Stones I)</span>
-                        <small>Dexter Academy | Otevřít (PDF)</small>
+                        <small>Dexter Academy</small>
                     </div>
                 </a>
 
@@ -332,7 +1013,7 @@
                     <div class="pdf-icon" aria-hidden="true">📄</div>
                     <div class="certifikat-info">
                         <span>Masér terapeut (80 hod.)</span>
-                        <small>Dexter Academy | Otevřít (PDF)</small>
+                        <small>Dexter Academy</small>
                     </div>
                 </a>
 
@@ -340,7 +1021,7 @@
                     <div class="pdf-icon" aria-hidden="true">📄</div>
                     <div class="certifikat-info">
                         <span>Přípravná sportovní masáž</span>
-                        <small>Dexter Academy | Otevřít (PDF)</small>
+                        <small>Dexter Academy</small>
                     </div>
                 </a>
 
@@ -348,7 +1029,7 @@
                     <div class="pdf-icon" aria-hidden="true">📜</div>
                     <div class="certifikat-info">
                         <span>Osvědčení MŠMT – Sportovní masáž</span>
-                        <small>Celostátní kvalifikace (150 hod.) | PDF</small>
+                        <small>Celostátní kvalifikace (150 hod.)</small>
                     </div>
                 </a>
 
@@ -356,7 +1037,7 @@
                     <div class="pdf-icon" aria-hidden="true">📄</div>
                     <div class="certifikat-info">
                         <span>Structural & Plastic Facial Modeling</span>
-                        <small>Kondakov Massage Academy | PDF</small>
+                        <small>Kondakov Massage Academy</small>
                     </div>
                 </a>
 
@@ -364,8 +1045,9 @@
         </section>
 
         <!-- NABÍDKA SLUŽEB Section -->
-        <section id="sluzby" class="container" aria-labelledby="sluzby-heading">
-            <h2 id="sluzby-heading" class="section-title">Nabídka masáží - Ceník služeb</h2>
+        <section id="sluzby" class="container reveal" aria-labelledby="sluzby-heading">
+            <h2 id="sluzby-heading" class="section-title">Nabídka masáží</h2>
+            <p class="section-subtitle">Profesionální terapeutické masáže přizpůsobené vašim potřebám</p>
             <div class="services-grid">
 
                 <!-- Service 1 -->
@@ -376,10 +1058,10 @@
                             <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                                 <span itemprop="price">1 300</span> <span itemprop="priceCurrency" content="CZK">Kč</span>
                             </span>
-                            <small>45 min</small>
+                            <small>45 minut</small>
                         </div>
                     </div>
-                    <button class="btn-detail" aria-expanded="false">Více o masáži</button>
+                    <button class="btn-detail" aria-expanded="false">Zobrazit detaily</button>
                     <div class="service-detail">
                         <div class="detail-content" itemprop="description">
                             <p><strong>Hloubková regenerační masáž</strong> je kombinace několika technik a cílená práce s tělem. Pracuji opravdu intenzivně do hloubky, a díky tomu je ošetření velmi účinné a přináší <strong>dlouhodobou úlevu</strong>. Nezaměřuji se pouze na místo, kde cítíte bolest, ale hledám její <strong>skutečnou příčinu</strong> – protože právě tam začíná opravdová změna.</p>
@@ -417,10 +1099,10 @@
                             <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                                 <span itemprop="price">1 300</span> <span itemprop="priceCurrency" content="CZK">Kč</span>
                             </span>
-                            <small>45 min</small>
+                            <small>45 minut</small>
                         </div>
                     </div>
-                    <button class="btn-detail" aria-expanded="false">Více o masáži</button>
+                    <button class="btn-detail" aria-expanded="false">Zobrazit detaily</button>
                     <div class="service-detail">
                         <div class="detail-content" itemprop="description">
                             <p>Tato kombinace představuje ucelenou péči, která vrací tělo do jeho přirozené rovnováhy bez bolesti. Využití <strong>prvků Dornovy metody umožňuje</strong> za vaší aktivní účasti (jemného pohybu) šetrně nasměrovat obratle a klouby na jejich správné místo.</p>
@@ -432,15 +1114,15 @@
                 <!-- Service 3 -->
                 <article class="service-card" onclick="toggleService(this)" itemscope itemtype="https://schema.org/Service">
                     <div class="service-header">
-                        <h3 itemprop="name">Strukturální masáž obličeje a dekoltu / Faceform</h3>
+                        <h3 itemprop="name">Strukturální masáž obličeje a dekoltu</h3>
                         <div class="service-info-mini">
                             <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                                 <span itemprop="price">1 500</span> <span itemprop="priceCurrency" content="CZK">Kč</span>
                             </span>
-                            <small>45 min</small>
+                            <small>45 minut</small>
                         </div>
                     </div>
-                    <button class="btn-detail" aria-expanded="false">Více o masáži</button>
+                    <button class="btn-detail" aria-expanded="false">Zobrazit detaily</button>
                     <div class="service-detail">
                         <div class="detail-content" itemprop="description">
                             <p>Strukturální masáž obličeje a dekoltu není jen běžná kosmetická masáž, ale intenzivní terapeutická metoda vycházející z poznatků čelistně-obličejové chirurgie a fyzioterapie. Masíruje se hlava, hrudník, šíje a obličej. Hloubková práce s mimickými svaly, fasciemi a lymfou. Zjemňování rýh a vrásek.</p>
@@ -458,9 +1140,10 @@
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq" aria-labelledby="faq-heading">
+        <section id="faq" class="reveal" aria-labelledby="faq-heading">
             <div class="container">
                 <h2 id="faq-heading" class="section-title">Často kladené dotazy</h2>
+                <p class="section-subtitle">Odpovědi na nejčastější otázky o masážích</p>
                 <div class="faq-container" itemscope itemtype="https://schema.org/FAQPage">
                     
                     <article class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
@@ -507,35 +1190,44 @@
         <section id="rezervace" aria-labelledby="rezervace-heading">
             <div class="container">
                 <h2 id="rezervace-heading" class="section-title">Rezervace termínu</h2>
+                <p class="section-subtitle">Zavolejte mi a domluvíme si vhodný termín</p>
                 <div class="reservation-box">
-                    <div>
-                        <a href="tel:+420728562001" class="btn" aria-label="Zavolat na telefonní číslo 728 562 001">Rezervovat telefonicky: 728 562 001</a>
-                    </div>
+                    <a href="tel:+420728562001" class="btn" aria-label="Zavolat na telefonní číslo 728 562 001">
+                        <span>📞 Zavolat: 728 562 001</span>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- KONTAKT Section -->
-        <section id="kontakt" class="container" aria-labelledby="kontakt-heading" itemscope itemtype="https://schema.org/LocalBusiness">
+        <section id="kontakt" class="container reveal" aria-labelledby="kontakt-heading" itemscope itemtype="https://schema.org/LocalBusiness">
             <h2 id="kontakt-heading" class="section-title">Kontakt a lokalita</h2>
+            <p class="section-subtitle">Najdete mě v Praze 11, 5 minut od metra Háje</p>
             <div class="kontakt-grid">
                 <div class="kontakt-info">
-                    <p><strong>Adresa:</strong><br> 
+                    <p>
+                        <strong>Adresa</strong>
                         <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                            <span itemprop="streetAddress">Hekrova 4</span>, 
+                            <span itemprop="streetAddress">Hekrova 4</span><br>
                             <span itemprop="postalCode">149 00</span> 
                             <span itemprop="addressLocality">Praha 11-Háje</span>
                         </span>
                     </p>
-                    <p><strong>Telefon:</strong><br> 
+                    <p>
+                        <strong>Telefon</strong>
                         <a href="tel:+420728562001" itemprop="telephone">+420 728 562 001</a>
                     </p>
-                    <br>
-                    <p><em>Dostupnost: 5 minut chůze od metra Háje (linka C). Bezproblémové parkování přímo v ulici Hekrova.</em></p>
+                    <p>
+                        <em>Dostupnost: 5 minut chůze od metra Háje (linka C). Bezproblémové parkování přímo v ulici Hekrova.</em>
+                    </p>
                     
                     <div class="google-buttons">
-                        <a href="https://maps.app.goo.gl/qMiyfLPJZAYFyXtb8" target="_blank" rel="noopener noreferrer" class="btn-secondary">📍 Navigovat přes Google Maps</a>
-                        <a href="https://maps.app.goo.gl/qMiyfLPJZAYFyXtb8" target="_blank" rel="noopener noreferrer" class="btn-secondary">⭐ Napsat recenzi na Google</a>
+                        <a href="https://maps.app.goo.gl/qMiyfLPJZAYFyXtb8" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                            <span>📍 Navigovat přes Google Maps</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/qMiyfLPJZAYFyXtb8" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                            <span>⭐ Napsat recenzi na Google</span>
+                        </a>
                     </div>
                 </div>
                 <div class="mapa-box">
@@ -565,12 +1257,22 @@
                 <span itemprop="addressLocality">Praha 11-Háje</span>
             </p>
             <p>Tel: <a href="tel:+420728562001" itemprop="telephone">728 562 001</a> | <a href="podminky.html" target="_blank" rel="noopener">Obchodní podmínky</a></p>
-            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">© 2026 Masáže u Terry. Všechna práva vyhrazena.</p>
+            <p style="margin-top: 2rem; font-size: 0.875rem; opacity: 0.6;">© 2026 Masáže u Terry. Všechna práva vyhrazena.</p>
         </div>
     </footer>
 
-    <!-- JavaScript - Defer for better performance -->
+    <!-- JavaScript -->
     <script defer>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
@@ -593,7 +1295,7 @@
             const isOpen = card.classList.contains('open');
             card.classList.toggle('open');
             const btn = card.querySelector('.btn-detail');
-            btn.textContent = card.classList.contains('open') ? 'Méně informací' : 'Více o masáži';
+            btn.textContent = card.classList.contains('open') ? 'Skrýt detaily' : 'Zobrazit detaily';
             btn.setAttribute('aria-expanded', card.classList.contains('open'));
         }
 
@@ -603,13 +1305,30 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if(target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
     </script>
 </body>
 </html>
